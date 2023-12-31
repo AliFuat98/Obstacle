@@ -1,18 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class MusicManager : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+public class MusicManager : MonoBehaviour {
+  public static MusicManager Instance { get; private set; }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+  [SerializeField] private float volume = 0.2f;
+  private AudioSource audioSource;
+
+  private void Awake() {
+    if (Instance == null) {
+      Instance = this;
+      DontDestroyOnLoad(gameObject); 
+      audioSource = GetComponent<AudioSource>();
+      audioSource.volume = volume;
+    } else if (Instance != this) {
+      Destroy(gameObject);
     }
+  }
+
+  public float GetVolume() {
+    return volume;
+  }
+
+  public void Mute() {
+    audioSource.volume = 0f;
+  }
 }

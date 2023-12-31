@@ -1,12 +1,14 @@
 using UnityEngine;
 
 public class PlayerJump : MonoBehaviour {
-  [SerializeField] float jumpForce = 7f; // Adjust the jump force as needed
+  [SerializeField] float firstJumpForce = 17f; // Adjust the jump force as needed
+  [SerializeField] float jumpForce = 10f; 
   [SerializeField] int maxJumps = 2;
   [SerializeField] float maxYVelocity = 10f;
 
   Rigidbody rb;
   bool isGrounded;
+  bool isFirstJump;
   bool shouldJump;
   int jumpCount = 0;
 
@@ -24,9 +26,13 @@ public class PlayerJump : MonoBehaviour {
   void FixedUpdate() {
     // Apply forces in FixedUpdate
     if (shouldJump) {
-      rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+      rb.velocity = Vector3.zero;
+      var forceToApply = isFirstJump ? firstJumpForce : jumpForce;
+      rb.AddForce(Vector3.up * forceToApply, ForceMode.Impulse);
+
       shouldJump = false; // Reset the jump flag
       jumpCount++;
+      isFirstJump = false;
     }
 
     if (rb.velocity.y > maxYVelocity) {
@@ -38,6 +44,7 @@ public class PlayerJump : MonoBehaviour {
     if (collision.gameObject.GetComponent<GroundMarker>() != null) {
       isGrounded = true;
       jumpCount = 0;
+      isFirstJump = true;
     }
   }
 
