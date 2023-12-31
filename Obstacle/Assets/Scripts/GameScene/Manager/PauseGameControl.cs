@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PauseGameControl : MonoBehaviour
-{
+public class PauseGameControl : MonoBehaviour {
   private bool isGamePaused = false;
   [SerializeField] Button pauseButton;
 

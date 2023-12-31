@@ -1,31 +1,37 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ObstacleSpawner : MonoBehaviour {
-  [SerializeField] GameObject obstaclePrefab;
+  [SerializeField] List<GameObject> obstaclePrefabs;
   [SerializeField] Vector2 spawnIntervalRange = new(1.0f, 3.0f);
+  [SerializeField] Transform[] spawnPoints;
 
   private float timer;
 
   private void Start() {
-    ResetTimer();
-  }
-
-  private void Update() {
-    timer -= Time.deltaTime;
-    if (timer <= 0) {
-      SpawnObstacle();
-      ResetTimer();
+    for (int i = 0; i < spawnPoints.Length; ++i) {
+      StartCoroutine(SpawnObstacles(i));
     }
   }
 
-  void SpawnObstacle() {
-    // Instantiate the obstacle prefab at the spawn point
-    var obstacle = Instantiate(obstaclePrefab, transform.position, Quaternion.identity,transform);
-    obstacle.transform.forward = (Vector3.zero - transform.position).normalized;
+  // get random obstacle
+  GameObject ObstacleFactory() {
+    int obstacleIndex = Random.Range(0, obstaclePrefabs.Count);
+    return obstaclePrefabs[obstacleIndex];
   }
 
-  void ResetTimer() {
-    // Set the timer to a random value within the specified range
-    timer = Random.Range(spawnIntervalRange.x, spawnIntervalRange.y);
+  IEnumerator SpawnObstacles(int index) {
+    while (true) // Infinite loop to keep spawning obstacles
+    {
+      yield return new WaitForSeconds(Random.Range(spawnIntervalRange.x, spawnIntervalRange.y));
+
+      GameObject obstacle = ObstacleFactory(); // Get an obstacle from the factory
+      obstacle = Instantiate(obstacle);
+
+      obstacle.transform.position = new Vector3(spawnPoints[index].position.x, obstacle.transform.position.y, spawnPoints[index].position.z);
+      obstacle.transform.SetParent(transform, false);
+      obstacle.transform.forward = (Vector3.zero - spawnPoints[index].position).normalized;
+    }
   }
 }

@@ -1,17 +1,24 @@
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class ScoreHandle : MonoBehaviour
-{
+public class ScoreHandle : MonoBehaviour {
+
+  public static ScoreHandle Instance { get; private set; }
+
   [SerializeField] TextMeshProUGUI scoreText;
-  public float score = 0; // Current score
-  public float scoreRate = .5f; // Points added per second
-  [SerializeField] private PauseGameControl pauseGameControl; // Reference to the GameControl script
+  [SerializeField] TextMeshProUGUI eggCountText;
+  [SerializeField] private PauseGameControl pauseGameControl;
+
+  int eggCount = 0;
+  float score = 0;
+  float scoreRate = .5f;
+
+  private void Awake() {
+    Instance = this;
+  }
 
   void Start() {
-    //pauseGameControl = FindObjectOfType<PauseGameControl>(); // Find the GameControl script
     StartCoroutine(IncreaseScoreRate());
   }
 
@@ -29,9 +36,20 @@ public class ScoreHandle : MonoBehaviour
     }
   }
 
-  private void UpdateScoreDisplay() {
+  void UpdateScoreDisplay() {
     if (scoreText != null) {
       scoreText.text = Mathf.CeilToInt(score).ToString();
+    }
+  }
+
+  public void IncreaseEggCount() {
+    eggCount++;
+    UpadateEggDisplay();
+  }
+
+  void UpadateEggDisplay() {
+    if (eggCountText != null) {
+      eggCountText.text = eggCount.ToString();
     }
   }
 }
