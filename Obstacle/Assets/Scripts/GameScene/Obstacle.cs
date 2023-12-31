@@ -1,18 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class Obstacle : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+public class Obstacle : MonoBehaviour {
+  public float speed = -5.0f;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+  private void Update() {
+    transform.Translate(speed * Time.deltaTime * Vector3.forward);
+  }
+
+  private void OnTriggerEnter(Collider other) {
+    if (other.gameObject.GetComponent<PlayerMarker>() != null) {
+      SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+  }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour {
+public class PlayerJump : MonoBehaviour {
   public float jumpForce = 7f; // Adjust the jump force as needed
   Rigidbody rb;
   bool isGrounded;
