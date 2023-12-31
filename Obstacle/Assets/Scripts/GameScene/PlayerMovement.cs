@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
-{
+public class PlayerMovement : MonoBehaviour {
   public float jumpForce = 7f; // Adjust the jump force as needed
   Rigidbody rb;
   bool isGrounded;
@@ -11,11 +10,11 @@ public class PlayerMovement : MonoBehaviour
 
   void Start() {
     rb = GetComponent<Rigidbody>();
+    GameInput.Instance.OnJumpAction += GameInput_OnJumpAction;
   }
 
-  void Update() {
-    // Check for jump input in Update
-    if (Input.GetKeyDown(KeyCode.Space) && isGrounded) {
+  private void GameInput_OnJumpAction(object sender, System.EventArgs e) {
+    if (isGrounded) {
       shouldJump = true;
     }
   }
