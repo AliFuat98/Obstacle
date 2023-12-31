@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Obstacle : MonoBehaviour {
+public class ObstacleMovement : MonoBehaviour {
   public float speed = -5.0f;
 
   private void Update() {
@@ -14,5 +14,9 @@ public class Obstacle : MonoBehaviour {
     if (other.gameObject.GetComponent<PlayerMarker>() != null) {
       SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+  }
+
+  private void OnBecameInvisible() {
+    Destroy(gameObject);
   }
 }
