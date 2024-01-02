@@ -6,4 +6,6 @@ using UnityEngine;
 public class AudioClipSO : ScriptableObject {
   public AudioClip[] jump;
   public AudioClip[] collect;
+  public AudioClip[] takeDamage;
+  public AudioClip[] Death;
 }

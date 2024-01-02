@@ -24,6 +24,14 @@ public class SoundManager : MonoBehaviour {
     PlaySound(audioClipSO.collect, Vector3.zero);
   }
 
+  public void PlayerTakeDamage() {
+    PlaySound(audioClipSO.takeDamage, Vector3.zero);
+  }
+
+  public void PlayerDeath() {
+    PlaySound(audioClipSO.Death, Vector3.zero);
+  }
+
   private void PlaySound(AudioClip[] audioClipArray, Vector3 position, bool useLastJumpAudioClip = false, float volume = .5f) {
     var index = Random.Range(0, audioClipArray.Length);
 

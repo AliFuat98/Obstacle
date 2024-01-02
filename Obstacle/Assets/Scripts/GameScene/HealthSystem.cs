@@ -9,24 +9,49 @@ public class HealthSystem : MonoBehaviour {
   int xCurrentHealth;
 
   int currentHealth {
-    get { 
-      return xCurrentHealth; 
+    get {
+      return xCurrentHealth;
     }
     set {
+      if (currentHealth != value) {
+        OnHealthChanged?.Invoke(this, new OnHealthChangedEventArgs {
+          health = value,
+        });
+      }
+
       xCurrentHealth = value;
-      OnHealthChanged?.Invoke(this, new OnHealthChangedEventArgs {
-        health = value,
-      });
     }
   }
 
-
   [SerializeField] float invulnerabilityTime = 1f;
-  bool isInvulnerable = false;
+
+  bool xIsInvulnerable = false;
+
+  bool isInvulnerable {
+    get {
+      return xIsInvulnerable;
+    }
+    set {
+      if (xIsInvulnerable != value) {
+        OnIsInvulnerableChanged?.Invoke(this, new OnIsInvulnerableChangedEventArgs {
+          isInvulnerable = value,
+        });
+      }
+
+      xIsInvulnerable = value;
+    }
+  }
 
   public event EventHandler<OnHealthChangedEventArgs> OnHealthChanged;
+
   public class OnHealthChangedEventArgs : EventArgs {
     public int health;
+  }
+
+  public event EventHandler<OnIsInvulnerableChangedEventArgs> OnIsInvulnerableChanged;
+
+  public class OnIsInvulnerableChangedEventArgs : EventArgs {
+    public bool isInvulnerable;
   }
 
   public event EventHandler OnDeath; // Event for death
@@ -39,6 +64,7 @@ public class HealthSystem : MonoBehaviour {
     if (isInvulnerable) return;
 
     currentHealth -= damage;
+    SoundManager.Instance.PlayerTakeDamage();
 
     if (currentHealth <= 0) {
       Die();
@@ -59,7 +85,7 @@ public class HealthSystem : MonoBehaviour {
   }
 
   private void Die() {
-    OnDeath?.Invoke(this,EventArgs.Empty);
+    OnDeath?.Invoke(this, EventArgs.Empty);
     SceneManager.LoadScene(SceneManager.GetActiveScene().name);
   }
 
