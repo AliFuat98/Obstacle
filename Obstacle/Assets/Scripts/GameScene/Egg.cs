@@ -5,7 +5,7 @@ public class Egg : MonoBehaviour, ICollectible {
     // Code for what happens when the egg is collected
     ScoreHandle.Instance.IncreaseEggCount();
     SoundManager.Instance.PlayerCollect();
-    // Optionally, destroy the egg object
-    Destroy(gameObject);
+
+    gameObject.SetActive(false);
   }
 }

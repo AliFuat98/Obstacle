@@ -597,6 +597,37 @@ MonoBehaviour:
   pauseButton: {fileID: 523367300}
   StartButton: {fileID: 844235438}
   MainMenuGO: {fileID: 1984880988}
+--- !u!1 &388951728
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 388951729}
+  m_Layer: 0
+  m_Name: PoolObjectParent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &388951729
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 388951728}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1533992630}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &411929746
 GameObject:
   m_ObjectHideFlags: 0
@@ -3058,14 +3089,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstaclePrefabs:
   - {fileID: 1571321360999975046, guid: 349939d5f210f6a4cbaebd27896d23e5, type: 3}
-  - {fileID: 1571321360999975046, guid: 349939d5f210f6a4cbaebd27896d23e5, type: 3}
-  - {fileID: 1571321360999975046, guid: 349939d5f210f6a4cbaebd27896d23e5, type: 3}
-  - {fileID: 1571321360999975046, guid: 349939d5f210f6a4cbaebd27896d23e5, type: 3}
   - {fileID: 3084302644421053041, guid: f61fcc10fa1223345a98407ef1f642bb, type: 3}
   spawnIntervalRange: {x: 1, y: 3}
   spawnPoints:
   - {fileID: 803151533}
   - {fileID: 1409677147}
+  poolSize: 10
+  poolObjectsParent: {fileID: 388951729}
 --- !u!4 &1533992630
 Transform:
   m_ObjectHideFlags: 0
@@ -3081,6 +3111,7 @@ Transform:
   m_Children:
   - {fileID: 803151533}
   - {fileID: 1409677147}
+  - {fileID: 388951729}
   m_Father: {fileID: 936493646}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1551068406
