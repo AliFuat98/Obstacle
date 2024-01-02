@@ -5,7 +5,8 @@ using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class HealthSystem : MonoBehaviour {
-  [SerializeField] int maxHealth = 100;
+  [SerializeField] int maxHealth = 8;
+  [SerializeField] int startHealth = 3;
   int xCurrentHealth;
 
   int currentHealth {
@@ -57,7 +58,7 @@ public class HealthSystem : MonoBehaviour {
   public event EventHandler OnDeath; // Event for death
 
   void Start() {
-    currentHealth = maxHealth;
+    currentHealth = startHealth;
   }
 
   public void TakeDamage(int damage) {
@@ -86,7 +87,6 @@ public class HealthSystem : MonoBehaviour {
 
   private void Die() {
     OnDeath?.Invoke(this, EventArgs.Empty);
-    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
   }
 
   public bool IsInvulnerabile() {

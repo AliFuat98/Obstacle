@@ -51,4 +51,8 @@ public class ScoreHandle : MonoBehaviour {
       eggCountText.text = $"Egg\n{eggCount}";
     }
   }
+
+  public float GetScore() {
+    return score;
+  }
 }
