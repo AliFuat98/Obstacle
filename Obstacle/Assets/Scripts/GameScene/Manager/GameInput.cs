@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class GameInput : MonoBehaviour {
@@ -26,7 +25,7 @@ public class GameInput : MonoBehaviour {
     playerInputActions.Player.Jump.performed += Jump_performed;
   }
 
-  private void Jump_performed(InputAction.CallbackContext obj) {
+  public void Jump_performed(InputAction.CallbackContext context) {
     OnJumpAction?.Invoke(this, EventArgs.Empty);
   }
 }

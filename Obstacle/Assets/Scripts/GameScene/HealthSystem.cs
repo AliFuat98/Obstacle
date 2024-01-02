@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class HealthSystem : MonoBehaviour {
   [SerializeField] int maxHealth = 100;
@@ -23,7 +24,7 @@ public class HealthSystem : MonoBehaviour {
   [SerializeField] float invulnerabilityTime = 1f;
   bool isInvulnerable = false;
 
-  public event EventHandler OnHealthChanged;
+  public event EventHandler<OnHealthChangedEventArgs> OnHealthChanged;
   public class OnHealthChangedEventArgs : EventArgs {
     public int health;
   }
@@ -39,7 +40,6 @@ public class HealthSystem : MonoBehaviour {
 
     currentHealth -= damage;
 
-
     if (currentHealth <= 0) {
       Die();
     } else {
@@ -50,9 +50,6 @@ public class HealthSystem : MonoBehaviour {
   public void Heal(int healingAmount) {
     var newHealt = currentHealth + healingAmount;
     currentHealth = Mathf.Min(newHealt, maxHealth);
-    OnHealthChanged?.Invoke(this, new OnHealthChangedEventArgs {
-      health = currentHealth,
-    });
   }
 
   private IEnumerator Invulnerability() {
@@ -63,5 +60,10 @@ public class HealthSystem : MonoBehaviour {
 
   private void Die() {
     OnDeath?.Invoke(this,EventArgs.Empty);
+    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+  }
+
+  public bool IsInvulnerabile() {
+    return isInvulnerable;
   }
 }

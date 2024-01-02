@@ -3,7 +3,6 @@ using TMPro;
 using UnityEngine;
 
 public class ScoreHandle : MonoBehaviour {
-
   public static ScoreHandle Instance { get; private set; }
 
   [SerializeField] TextMeshProUGUI scoreText;
@@ -38,7 +37,7 @@ public class ScoreHandle : MonoBehaviour {
 
   void UpdateScoreDisplay() {
     if (scoreText != null) {
-      scoreText.text = Mathf.CeilToInt(score).ToString();
+      scoreText.text = $"Score\n{Mathf.CeilToInt(score)}";
     }
   }
 
@@ -49,7 +48,7 @@ public class ScoreHandle : MonoBehaviour {
 
   void UpadateEggDisplay() {
     if (eggCountText != null) {
-      eggCountText.text = eggCount.ToString();
+      eggCountText.text = $"Egg\n{eggCount}";
     }
   }
 }

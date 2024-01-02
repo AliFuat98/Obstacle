@@ -3,13 +3,15 @@ using UnityEngine;
 public class MusicManager : MonoBehaviour {
   public static MusicManager Instance { get; private set; }
 
-  [SerializeField] private float volume = 0.2f;
-  private AudioSource audioSource;
+  [SerializeField] private float volume = 0.05f;
 
-  private void Awake() {
+  AudioSource audioSource;
+  bool isMuted = false;
+
+  void Awake() {
     if (Instance == null) {
       Instance = this;
-      DontDestroyOnLoad(gameObject); 
+      DontDestroyOnLoad(gameObject);
       audioSource = GetComponent<AudioSource>();
       audioSource.volume = volume;
     } else if (Instance != this) {
@@ -21,7 +23,13 @@ public class MusicManager : MonoBehaviour {
     return volume;
   }
 
-  public void Mute() {
-    audioSource.volume = 0f;
+  public void ToggleMute() {
+    if (isMuted) {
+      audioSource.volume = 0.05f;
+      isMuted = false;
+    } else {
+      audioSource.volume = 0f;
+      isMuted = true;
+    }
   }
 }

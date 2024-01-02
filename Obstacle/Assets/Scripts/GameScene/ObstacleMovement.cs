@@ -12,7 +12,11 @@ public class ObstacleMovement : MonoBehaviour {
 
   private void OnTriggerEnter(Collider other) {
     if (other.gameObject.GetComponent<PlayerMarker>() != null) {
-      SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+      HealthSystem healthSystem = other.gameObject.GetComponent<HealthSystem>();
+      if (!healthSystem.IsInvulnerabile()) {
+        healthSystem.TakeDamage(1);
+      }
     }
   }
 
