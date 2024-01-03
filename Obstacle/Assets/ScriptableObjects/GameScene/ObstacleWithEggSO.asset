@@ -15,4 +15,4 @@ MonoBehaviour:
   prefab: {fileID: 3084302644421053041, guid: f61fcc10fa1223345a98407ef1f642bb, type: 3}
   spawnProbability: 0.2
   poolSize: 10
-  moveSpeed: 8
+  moveSpeed: 10

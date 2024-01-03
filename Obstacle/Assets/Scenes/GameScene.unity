@@ -3090,6 +3090,7 @@ MonoBehaviour:
   obstacleSOList:
   - {fileID: 11400000, guid: c2eb40d8e24f3bd439ba4596aa7ddd7a, type: 2}
   - {fileID: 11400000, guid: f870a6d89089c22489d01102fd238d56, type: 2}
+  - {fileID: 11400000, guid: e3781e7ff91e07b47a23f4afc2443ea5, type: 2}
   spawnIntervalRange: {x: 1, y: 3}
   spawnPoints:
   - {fileID: 803151533}

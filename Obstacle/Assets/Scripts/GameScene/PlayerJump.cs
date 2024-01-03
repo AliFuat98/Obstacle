@@ -2,13 +2,15 @@ using System;
 using UnityEngine;
 
 public class PlayerJump : MonoBehaviour {
+
   public event EventHandler<OnJumpedEventArgs> OnJumped;
+
   public class OnJumpedEventArgs : EventArgs {
     public bool useLastJumpAudioClip;
   }
 
   [SerializeField] float firstJumpForce = 17f; // Adjust the jump force as needed
-  [SerializeField] float jumpForce = 10f; 
+  [SerializeField] float jumpForce = 10f;
   [SerializeField] int maxJumps = 2;
   [SerializeField] float maxYVelocity = 10f;
 
@@ -32,7 +34,12 @@ public class PlayerJump : MonoBehaviour {
   void FixedUpdate() {
     // Apply forces in FixedUpdate
     if (shouldJump) {
-      rb.velocity = Vector3.zero;
+      // if it is going down reset velocity to jump nicely
+      if (rb.velocity.y < 0) {
+        rb.velocity = Vector3.zero;
+      }
+
+      // first jump has more force
       var forceToApply = isFirstJump ? firstJumpForce : jumpForce;
       rb.AddForce(Vector3.up * forceToApply, ForceMode.Impulse);
 
