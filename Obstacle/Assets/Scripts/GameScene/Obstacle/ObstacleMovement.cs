@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public class ObstacleMovement : MonoBehaviour {
-  [SerializeField] float speed;
+  [SerializeField] ObstacleSO obstacleSO;
 
   [SerializeField] float destroyTimerMax;
   float destroyTimer;
@@ -11,7 +11,7 @@ public class ObstacleMovement : MonoBehaviour {
   }
 
   private void Update() {
-    transform.Translate(speed * Time.deltaTime * Vector3.forward);
+    transform.Translate(obstacleSO.moveSpeed * Time.deltaTime * Vector3.forward);
 
     destroyTimer += Time.deltaTime;
     if (destroyTimer > destroyTimerMax) {

@@ -282,7 +282,7 @@ GameObject:
   - component: {fileID: 559692674997771552}
   - component: {fileID: 8102495936583458560}
   m_Layer: 0
-  m_Name: Obstacle2
+  m_Name: ObstacleWithEgg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -317,7 +317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15dc319fab1847040bef69b2533ddef5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 7
+  obstacleSO: {fileID: 11400000, guid: f870a6d89089c22489d01102fd238d56, type: 2}
   destroyTimerMax: 7
 --- !u!114 &559692674997771552
 MonoBehaviour:

@@ -1,12 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class EggReset : MonoBehaviour
-{
+public class EggReset : MonoBehaviour {
   [SerializeField] GameObject EggGameObject;
 
   private void OnEnable() {
-    EggGameObject.SetActive(true);
+    float randomValue = Random.value;
+
+    if (randomValue >= 0.5f) {
+      EggGameObject.SetActive(true);
+    }
   }
 }

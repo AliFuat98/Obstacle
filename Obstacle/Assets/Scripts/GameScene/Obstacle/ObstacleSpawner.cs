@@ -1,13 +1,11 @@
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ObstacleSpawner : MonoBehaviour {
-  [SerializeField] List<GameObject> obstaclePrefabs;
+  [SerializeField] List<ObstacleSO> obstacleSOList;
   [SerializeField] Vector2 spawnIntervalRange;
   [SerializeField] Transform[] spawnPoints;
-  [SerializeField] int poolSize = 10;
   [SerializeField] Transform poolObjectsParent;
 
   private List<GameObject>[] pools;
@@ -21,13 +19,13 @@ public class ObstacleSpawner : MonoBehaviour {
   }
 
   void InitializePools() {
-    pools = new List<GameObject>[obstaclePrefabs.Count];
+    pools = new List<GameObject>[obstacleSOList.Count];
 
-    for (int i = 0; i < obstaclePrefabs.Count; i++) {
+    for (int i = 0; i < obstacleSOList.Count; i++) {
       pools[i] = new List<GameObject>();
 
-      for (int j = 0; j < poolSize; j++) {
-        GameObject obj = Instantiate(obstaclePrefabs[i]);
+      for (int j = 0; j < obstacleSOList[i].poolSize; j++) {
+        GameObject obj = Instantiate(obstacleSOList[i].prefab);
         obj.transform.SetParent(poolObjectsParent, false);
         obj.SetActive(false);
         pools[i].Add(obj);
@@ -35,34 +33,55 @@ public class ObstacleSpawner : MonoBehaviour {
     }
   }
 
-  GameObject GetPooledObstacle(int prefabIndex) {
-    foreach (var obj in pools[prefabIndex]) {
-      if (!obj.activeInHierarchy) {
-        return obj;
-      }
-    }
-
-    // Optional: Expand pool if all objects are active
-    GameObject newObj = Instantiate(obstaclePrefabs[prefabIndex]);
-    newObj.SetActive(false);
-    pools[prefabIndex].Add(newObj);
-    return newObj;
-  }
-
-  public void ReturnPool(GameObject obj) {
-    obj.SetActive(false);
-  }
-
   IEnumerator SpawnObstacles(int index) {
     while (true) {
       yield return new WaitForSeconds(Random.Range(spawnIntervalRange.x, spawnIntervalRange.y));
 
-      int obstacleIndex = Random.Range(0, obstaclePrefabs.Count);
-      GameObject obstacle = GetPooledObstacle(obstacleIndex); // Use pooled obstacle
+      GameObject obstacle = GetPooledObstacle(); // Use pooled obstacle
       obstacle.SetActive(true);
       obstacle.transform.position = new Vector3(spawnPoints[index].position.x, obstacle.transform.position.y, spawnPoints[index].position.z);
       obstacle.transform.SetParent(poolObjectsParent, false);
       obstacle.transform.forward = (Vector3.zero - spawnPoints[index].position).normalized;
     }
+  }
+
+  GameObject GetPooledObstacle() {
+    float randomValue = Random.value;  // between 0-1
+    float cumulativeProbability = 0f;
+
+    int index = 0;
+    foreach (ObstacleSO obstacleSO in obstacleSOList) {
+      cumulativeProbability += obstacleSO.spawnProbability;
+      if (randomValue <= cumulativeProbability) {
+        // find and return an inactive object
+        foreach (GameObject obj in pools[index]) {
+          if (!obj.activeInHierarchy) {
+            return obj;
+          }
+        }
+
+        break;
+      }
+      index++;
+    }
+
+    // Optional: Expand pool if all objects are active
+    index = 0;
+    foreach (ObstacleSO obstacleSO in obstacleSOList) {
+      cumulativeProbability += obstacleSO.spawnProbability;
+      if (randomValue <= cumulativeProbability) {
+        break;
+      }
+      index++;
+    }
+
+    GameObject newObj = Instantiate(obstacleSOList[index].prefab);
+    newObj.SetActive(false);
+    pools[index].Add(newObj);
+    return newObj;
+  }
+
+  public void ReturnPool(GameObject obj) {
+    obj.SetActive(false);
   }
 }

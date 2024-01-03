@@ -3087,14 +3087,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d7d787207aec484f8abfbd2b74a6535, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstaclePrefabs:
-  - {fileID: 1571321360999975046, guid: 349939d5f210f6a4cbaebd27896d23e5, type: 3}
-  - {fileID: 3084302644421053041, guid: f61fcc10fa1223345a98407ef1f642bb, type: 3}
+  obstacleSOList:
+  - {fileID: 11400000, guid: c2eb40d8e24f3bd439ba4596aa7ddd7a, type: 2}
+  - {fileID: 11400000, guid: f870a6d89089c22489d01102fd238d56, type: 2}
   spawnIntervalRange: {x: 1, y: 3}
   spawnPoints:
   - {fileID: 803151533}
   - {fileID: 1409677147}
-  poolSize: 10
   poolObjectsParent: {fileID: 388951729}
 --- !u!4 &1533992630
 Transform:
