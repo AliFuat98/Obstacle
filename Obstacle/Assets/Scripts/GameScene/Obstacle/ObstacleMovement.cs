@@ -29,7 +29,7 @@ public class ObstacleMovement : MonoBehaviour {
   private void OnTriggerEnter(Collider other) {
     if (other.gameObject.GetComponent<PlayerMarker>() != null) {
       HealthSystem healthSystem = other.gameObject.GetComponent<HealthSystem>();
-      if (!healthSystem.IsInvulnerabile()) {
+      if (!healthSystem.IsInvulnerabile() && canMove) {
         healthSystem.TakeDamage(1);
       }
     }
