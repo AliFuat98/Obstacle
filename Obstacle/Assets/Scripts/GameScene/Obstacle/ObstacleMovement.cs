@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class ObstacleMovement : MonoBehaviour {
@@ -6,11 +7,17 @@ public class ObstacleMovement : MonoBehaviour {
   [SerializeField] float destroyTimerMax;
   float destroyTimer;
 
+  bool canMove = true;
+  bool isFirstLaserCoroutine = true;
+
   private void OnEnable() {
     destroyTimer = 0f;
   }
 
   private void Update() {
+    if (!canMove) {
+      return;
+    }
     transform.Translate(obstacleSO.moveSpeed * Time.deltaTime * Vector3.forward);
 
     destroyTimer += Time.deltaTime;
@@ -26,5 +33,22 @@ public class ObstacleMovement : MonoBehaviour {
         healthSystem.TakeDamage(1);
       }
     }
+  }
+
+  public void LaserTouch() {
+    canMove = false;
+    if (isFirstLaserCoroutine) {
+      StartCoroutine(LaserTouchCoroutine());
+    } else {
+      isFirstLaserCoroutine = false;
+    }
+  }
+
+  IEnumerator LaserTouchCoroutine() {
+    yield return new WaitForSeconds(Random.Range(1, 2));
+
+    ParticalSpawner.Instance.SpawnPartical(transform.position);
+
+    gameObject.SetActive(false);
   }
 }

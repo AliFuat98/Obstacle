@@ -198,4 +198,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstacleSO: {fileID: 11400000, guid: f870a6d89089c22489d01102fd238d56, type: 2}
+  testpart: {fileID: 2346226826525694711, guid: 1cec1eda8d6effc43b66a59a0eb0b5ec, type: 3}
   destroyTimerMax: 7

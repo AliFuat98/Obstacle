@@ -366,7 +366,7 @@ GameObject:
   - component: {fileID: 3459460895250005744}
   - component: {fileID: 1615709690762466444}
   - component: {fileID: 8102495936583458560}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ObstacleSquare
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -403,6 +403,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstacleSO: {fileID: 11400000, guid: f870a6d89089c22489d01102fd238d56, type: 2}
+  testpart: {fileID: 2346226826525694711, guid: 1cec1eda8d6effc43b66a59a0eb0b5ec, type: 3}
   destroyTimerMax: 7
 --- !u!65 &8102495936583458560
 BoxCollider:

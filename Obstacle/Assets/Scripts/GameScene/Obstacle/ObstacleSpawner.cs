@@ -8,7 +8,7 @@ public class ObstacleSpawner : MonoBehaviour {
   [SerializeField] Transform[] spawnPoints;
   [SerializeField] Transform poolObjectsParent;
 
-  private List<GameObject>[] pools;
+  List<GameObject>[] pools;
 
   private void Start() {
     InitializePools();
@@ -19,6 +19,7 @@ public class ObstacleSpawner : MonoBehaviour {
   }
 
   void InitializePools() {
+    // obstacles
     pools = new List<GameObject>[obstacleSOList.Count];
 
     for (int i = 0; i < obstacleSOList.Count; i++) {
