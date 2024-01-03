@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: ObstacleSquareSO
   m_EditorClassIdentifier: 
   prefab: {fileID: 3084302644421053041, guid: 6b60127249d0f984398baaf1031e1ed5, type: 3}
-  spawnProbability: 0.2
+  spawnProbability: 0.1
   poolSize: 10
   moveSpeed: 9

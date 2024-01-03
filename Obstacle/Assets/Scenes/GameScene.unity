@@ -2746,7 +2746,7 @@ Transform:
   m_GameObject: {fileID: 1267605226}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 1.99, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -2834,6 +2834,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8eeaa458bc51a2b45821040353d1efa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  laserVisual: {fileID: 8235435554187054332, guid: 2fd57545ac2833b4ba0dc8e076cad5d6, type: 3}
 --- !u!1 &1278793736
 GameObject:
   m_ObjectHideFlags: 0
@@ -3104,6 +3105,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c2eb40d8e24f3bd439ba4596aa7ddd7a, type: 2}
   - {fileID: 11400000, guid: f870a6d89089c22489d01102fd238d56, type: 2}
   - {fileID: 11400000, guid: e3781e7ff91e07b47a23f4afc2443ea5, type: 2}
+  - {fileID: 11400000, guid: 95e74c414621f434fbed5c4e3c80d915, type: 2}
   spawnIntervalRange: {x: 1, y: 3}
   spawnPoints:
   - {fileID: 803151533}
@@ -3601,7 +3603,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Score
 
-    109'
+    0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

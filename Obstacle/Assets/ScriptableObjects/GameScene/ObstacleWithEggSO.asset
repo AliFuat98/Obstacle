@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: ObstacleWithEggSO
   m_EditorClassIdentifier: 
   prefab: {fileID: 3084302644421053041, guid: f61fcc10fa1223345a98407ef1f642bb, type: 3}
-  spawnProbability: 0.2
+  spawnProbability: 0.25
   poolSize: 10
   moveSpeed: 10
