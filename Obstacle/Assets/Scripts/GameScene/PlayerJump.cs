@@ -9,10 +9,10 @@ public class PlayerJump : MonoBehaviour {
     public bool useLastJumpAudioClip;
   }
 
-  [SerializeField] float firstJumpForce = 17f; // Adjust the jump force as needed
-  [SerializeField] float jumpForce = 10f;
-  [SerializeField] int maxJumps = 2;
-  [SerializeField] float maxYVelocity = 10f;
+  [SerializeField] float firstJumpForce; // Adjust the jump force as needed
+  [SerializeField] float jumpForce;
+  [SerializeField] int maxJumps;
+  [SerializeField] float maxYVelocity;
 
   Rigidbody rb;
   bool isGrounded;

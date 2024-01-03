@@ -8,10 +8,7 @@ public class GameInput : MonoBehaviour {
 
   public event EventHandler OnJumpAction;
 
-  private void OnDestroy() {
-    playerInputActions.Player.Jump.performed -= Jump_performed;
-    playerInputActions.Dispose();
-  }
+  public event EventHandler OnLaserAction;
 
   private void Awake() {
     Instance = this;
@@ -23,9 +20,20 @@ public class GameInput : MonoBehaviour {
     playerInputActions.Player.Enable();
 
     playerInputActions.Player.Jump.performed += Jump_performed;
+    playerInputActions.Player.Laser.performed += Laser_performed;
+  }
+
+  private void Laser_performed(InputAction.CallbackContext obj) {
+    OnLaserAction?.Invoke(this, EventArgs.Empty);
   }
 
   public void Jump_performed(InputAction.CallbackContext context) {
     OnJumpAction?.Invoke(this, EventArgs.Empty);
+  }
+
+  private void OnDestroy() {
+    playerInputActions.Player.Jump.performed -= Jump_performed;
+    playerInputActions.Player.Laser.performed -= Laser_performed;
+    playerInputActions.Dispose();
   }
 }

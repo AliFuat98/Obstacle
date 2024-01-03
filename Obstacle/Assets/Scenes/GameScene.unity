@@ -2677,6 +2677,7 @@ GameObject:
   - component: {fileID: 1267605228}
   - component: {fileID: 1267605227}
   - component: {fileID: 1267605232}
+  - component: {fileID: 1267605237}
   - component: {fileID: 1267605233}
   - component: {fileID: 1267605234}
   - component: {fileID: 1267605235}
@@ -2821,6 +2822,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skinnedMeshRenderer: {fileID: 5061659633303375554}
   flashEffectRate: 0.05
+--- !u!114 &1267605237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1267605226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eeaa458bc51a2b45821040353d1efa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1278793736
 GameObject:
   m_ObjectHideFlags: 0
