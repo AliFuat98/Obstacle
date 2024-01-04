@@ -23,7 +23,7 @@ public class GameInput : MonoBehaviour {
     playerInputActions.Player.Laser.performed += Laser_performed;
   }
 
-  private void Laser_performed(InputAction.CallbackContext obj) {
+  public void Laser_performed(InputAction.CallbackContext obj) {
     OnLaserAction?.Invoke(this, EventArgs.Empty);
   }
 

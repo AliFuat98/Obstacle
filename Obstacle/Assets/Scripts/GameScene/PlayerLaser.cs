@@ -1,8 +1,6 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class PlayerLaser : MonoBehaviour {
   [SerializeField] GameObject laserVisual;
@@ -13,14 +11,27 @@ public class PlayerLaser : MonoBehaviour {
 
   float duration;
 
+  public bool IsOnCooldown => Time.time - lastLaunchTime < cooldownDuration;
+  public float CooldownRemaining => Mathf.Max(0, cooldownDuration - (Time.time - lastLaunchTime));
+
+  public float cooldownDuration;
+  private float lastLaunchTime;
+
   void Start() {
     createdVisuals = new List<GameObject>();
 
     GameInput.Instance.OnLaserAction += Instance_OnLaserAction;
     duration = laserVisual.GetComponent<ParticleSystem>().main.duration;
+
+    lastLaunchTime = -cooldownDuration;
   }
 
   private void Instance_OnLaserAction(object sender, System.EventArgs e) {
+    if (IsOnCooldown) {
+      return;
+    }
+    lastLaunchTime = Time.time;
+
     GameObject createdVisual = Instantiate(laserVisual, transform);
 
     GameObject secondCreatedVisual = Instantiate(laserVisual, transform);
