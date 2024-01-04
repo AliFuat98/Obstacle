@@ -5,9 +5,8 @@ using UnityEngine.UI;
 public class RoundManager : MonoBehaviour {
 
   [Header("Scripts")]
-  [SerializeField] ObstacleSpawner obstacleSpawner;
-
   [SerializeField] PauseGameControl pauseGameControl;
+
   [SerializeField] GameObject RoundOverMenu;
 
   [Header("Buttons")]
@@ -22,6 +21,7 @@ public class RoundManager : MonoBehaviour {
 
   [Range(0f, 2f)]
   [SerializeField] float scaleFactor;
+  [SerializeField] TextMeshProUGUI roundCountText;
 
   [Header("Price Text")]
   [SerializeField] TextMeshProUGUI extraLifePriceText;
@@ -53,7 +53,7 @@ public class RoundManager : MonoBehaviour {
     set {
       if (value % objectPerRound == 0) {
         currentRound++;
-        objectPerRound = (int)(objectPerRound * scaleFactor);
+        objectPerRound += (int)(objectPerRound * scaleFactor);
         value = 1;
         RoundOver();
       }
@@ -65,30 +65,19 @@ public class RoundManager : MonoBehaviour {
   PlayerLaser playerLaser;
   PlayerJump playerJump;
 
+  IRoundFeature extraLifeFeature;
+  IRoundFeature laserFeature;
+  IRoundFeature extraJumpFeature;
+
   private void Awake() {
     lifeButton.onClick.AddListener(() => {
-      if (!CanPayExtraLifePrice()) {
-        return;
-      }
-      GetExtraLife();
-      UpdateLifePrice();
-      UpdatePriceVisual();
+      HandleRoundFeature(extraLifeFeature);
     });
     LaserButton.onClick.AddListener(() => {
-      if (!CanPayLaserPrice()) {
-        return;
-      }
-      DecreaseLaserCooldown();
-      UpdateLaserPrice();
-      UpdatePriceVisual();
+      HandleRoundFeature(laserFeature);
     });
     JumpButton.onClick.AddListener(() => {
-      if (!CanPayExtraJumpPrice()) {
-        return;
-      }
-      IncreaseJumpCount();
-      UpdateJumpPrice();
-      UpdatePriceVisual();
+      HandleRoundFeature(extraJumpFeature);
     });
 
     NextRoundButton.onClick.AddListener(() => {
@@ -101,72 +90,35 @@ public class RoundManager : MonoBehaviour {
     RoundOverMenu.SetActive(false);
     currentRound = 1;
 
+    // initilize features
     var player = FindObjectOfType<PlayerMarker>();
     playerHealthSystem = player.GetComponent<HealthSystem>();
     playerLaser = player.GetComponent<PlayerLaser>();
     playerJump = player.GetComponent<PlayerJump>();
+
+    extraLifeFeature = new ExtraLifeRoundFeature(extraLifePrice, extraLifePriceScaleFactor, playerHealthSystem);
+    laserFeature = new LaserRoundFeature(laserPrice, laserPriceScaleFactor, playerLaser);
+    extraJumpFeature = new ExtraJumpRoundFeature(extraJumpPrice, extraJumpPriceScaleFactor, playerJump);
+  }
+
+  private void HandleRoundFeature(IRoundFeature feature) {
+    if (feature.CanPay(ScoreHandle.Instance.GetEggCount())) {
+      feature.Execute();
+      feature.UpdatePrice();
+      UpdatePriceVisual();
+    }
+  }
+
+  private void UpdatePriceVisual() {
+    extraLifePriceText.text = extraLifeFeature.GetPriceText();
+    laserPriceText.text = laserFeature.GetPriceText();
+    extraJumpPriceText.text = extraJumpFeature.GetPriceText();
+    roundCountText.text = $"Round {currentRound}";
   }
 
   void RoundOver() {
     pauseGameControl.PauseGame();
     RoundOverMenu.SetActive(true);
     UpdatePriceVisual();
-  }
-
-  bool CanPayExtraLifePrice() {
-    var eggcount = ScoreHandle.Instance.GetEggCount();
-    if (eggcount >= extraLifePrice) {
-      return true;
-    }
-    return false;
-  }
-
-  bool CanPayLaserPrice() {
-    var eggcount = ScoreHandle.Instance.GetEggCount();
-    if (eggcount >= laserPrice) {
-      return true;
-    }
-    return false;
-  }
-
-  bool CanPayExtraJumpPrice() {
-    var eggcount = ScoreHandle.Instance.GetEggCount();
-    if (eggcount >= extraJumpPrice) {
-      return true;
-    }
-    return false;
-  }
-
-  void GetExtraLife() {
-    playerHealthSystem.Heal(1);
-    ScoreHandle.Instance.DecreaseEggCount(extraLifePrice);
-  }
-
-  void DecreaseLaserCooldown() {
-    playerLaser.DecreaseCooldown(1f);
-    ScoreHandle.Instance.DecreaseEggCount(laserPrice);
-  }
-
-  void IncreaseJumpCount() {
-    playerJump.IncreaseMaxJumpCount(1);
-    ScoreHandle.Instance.DecreaseEggCount(extraJumpPrice);
-  }
-
-  void UpdateLifePrice() {
-    extraLifePrice += (int)(extraLifePrice * extraLifePriceScaleFactor);
-  }
-
-  void UpdateLaserPrice() {
-    laserPrice += (int)(laserPrice * laserPriceScaleFactor);
-  }
-
-  void UpdateJumpPrice() {
-    extraJumpPrice += (int)(extraJumpPrice * extraJumpPriceScaleFactor);
-  }
-
-  void UpdatePriceVisual() {
-    extraLifePriceText.text = $"{extraLifePrice} Egg";
-    laserPriceText.text = $"{laserPrice} Egg";
-    extraJumpPriceText.text = $"{extraJumpPrice} Egg";
   }
 }

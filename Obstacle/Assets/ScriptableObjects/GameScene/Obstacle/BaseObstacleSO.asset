@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BaseObstacleSO
   m_EditorClassIdentifier: 
   prefab: {fileID: 1571321360999975046, guid: 349939d5f210f6a4cbaebd27896d23e5, type: 3}
-  spawnProbability: 0.6
+  spawnProbability: 0.5
   poolSize: 15
   moveSpeed: 8
   scorePoint: 5

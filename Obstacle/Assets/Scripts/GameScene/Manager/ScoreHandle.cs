@@ -9,7 +9,7 @@ public class ScoreHandle : MonoBehaviour {
   [SerializeField] TextMeshProUGUI eggCountText;
   [SerializeField] private PauseGameControl pauseGameControl;
 
-  int eggCount = 100;
+  int eggCount = 0;
   float score = 0;
   float scoreRate = .5f;
 

@@ -6446,24 +6446,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa6d36e8fe5642e49bc569d439be0411, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstacleSpawner: {fileID: 1533992629}
   pauseGameControl: {fileID: 339307469}
   RoundOverMenu: {fileID: 2131972214}
   lifeButton: {fileID: 2063449351}
   LaserButton: {fileID: 1528675162}
   JumpButton: {fileID: 919248619}
   NextRoundButton: {fileID: 1077310268}
-  objectPerRound: 3
-  scaleFactor: 1.5
+  objectPerRound: 40
+  scaleFactor: 0.7
+  roundCountText: {fileID: 419464983}
   extraLifePriceText: {fileID: 543420624}
   laserPriceText: {fileID: 832967588}
   extraJumpPriceText: {fileID: 1558989312}
-  extraLifePrice: 5
-  extraLifePriceScaleFactor: 1
-  laserPrice: 10
-  laserPriceScaleFactor: 1
-  extraJumpPrice: 15
-  extraJumpPriceScaleFactor: 1
+  extraLifePrice: 3
+  extraLifePriceScaleFactor: 0.6
+  laserPrice: 2
+  laserPriceScaleFactor: 0.7
+  extraJumpPrice: 10
+  extraJumpPriceScaleFactor: 0.5
 --- !u!1 &1699573110
 GameObject:
   m_ObjectHideFlags: 0
