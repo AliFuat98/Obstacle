@@ -24,6 +24,10 @@ public class RoundManager : MonoBehaviour {
   [Range(0f, 2f)]
   [SerializeField] float scaleFactor;
 
+  [SerializeField] Slider roundSlider;
+  [SerializeField] float fillSpeed = 0.5f;
+  float targetProgress = 0f;
+
   [SerializeField] TextMeshProUGUI roundCountText;
 
   [Header("Price Text")]
@@ -61,6 +65,7 @@ public class RoundManager : MonoBehaviour {
         RoundOver();
       }
       totalSpawnedObject = value;
+      targetProgress = (float)totalSpawnedObject / objectPerRound;
     }
   }
 
@@ -87,12 +92,16 @@ public class RoundManager : MonoBehaviour {
       pauseGameControl.ResumeGame();
       obstacleSpawner.ResetAllObstacles();
       RoundOverMenu.SetActive(false);
+      targetProgress = 0f;
+      roundSlider.value = 0f;
     });
   }
 
   void Start() {
     RoundOverMenu.SetActive(false);
     currentRound = 1;
+    targetProgress = 0f;
+    roundSlider.value = 0f;
 
     // initilize features
     var player = FindObjectOfType<PlayerMarker>();
@@ -103,6 +112,12 @@ public class RoundManager : MonoBehaviour {
     extraLifeFeature = new ExtraLifeRoundFeature(extraLifePrice, extraLifePriceScaleFactor, playerHealthSystem);
     laserFeature = new LaserRoundFeature(laserPrice, laserPriceScaleFactor, playerLaser);
     extraJumpFeature = new ExtraJumpRoundFeature(extraJumpPrice, extraJumpPriceScaleFactor, playerJump);
+  }
+
+  void Update() {
+    if (roundSlider.value < targetProgress) {
+      roundSlider.value += fillSpeed * Time.deltaTime;
+    }
   }
 
   private void HandleRoundFeature(IRoundFeature feature) {
