@@ -41,8 +41,8 @@ public class ScoreHandle : MonoBehaviour {
     }
   }
 
-  public void IncreaseEggCount() {
-    eggCount++;
+  public void IncreaseEggCount(int amount) {
+    eggCount += amount;
     UpadateEggDisplay();
   }
 

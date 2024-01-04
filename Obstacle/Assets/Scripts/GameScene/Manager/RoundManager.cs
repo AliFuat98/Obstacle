@@ -5,6 +5,8 @@ using UnityEngine.UI;
 public class RoundManager : MonoBehaviour {
 
   [Header("Scripts")]
+  [SerializeField] ObstacleSpawner obstacleSpawner;
+
   [SerializeField] PauseGameControl pauseGameControl;
 
   [SerializeField] GameObject RoundOverMenu;
@@ -21,6 +23,7 @@ public class RoundManager : MonoBehaviour {
 
   [Range(0f, 2f)]
   [SerializeField] float scaleFactor;
+
   [SerializeField] TextMeshProUGUI roundCountText;
 
   [Header("Price Text")]
@@ -82,6 +85,7 @@ public class RoundManager : MonoBehaviour {
 
     NextRoundButton.onClick.AddListener(() => {
       pauseGameControl.ResumeGame();
+      obstacleSpawner.ResetAllObstacles();
       RoundOverMenu.SetActive(false);
     });
   }

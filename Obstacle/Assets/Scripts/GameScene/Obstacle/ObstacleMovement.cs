@@ -55,6 +55,11 @@ public class ObstacleMovement : MonoBehaviour {
     eventChannel.RaiseEvent(obstacleSO.scorePoint.ToString(), transform.position + Vector3.up * 1);
     ScoreHandle.Instance.IncreaseScore(obstacleSO.scorePoint);
 
+    Egg collectibleEgg = GetComponentInChildren<Egg>();
+    if (collectibleEgg != null) {
+      ScoreHandle.Instance.IncreaseEggCount(2);
+    } 
+
     gameObject.SetActive(false);
   }
 

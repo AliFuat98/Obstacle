@@ -87,4 +87,12 @@ public class ObstacleSpawner : MonoBehaviour {
   public void ReturnPool(GameObject obj) {
     obj.SetActive(false);
   }
+
+  public void ResetAllObstacles() {
+    for (int i = 0; i < pools.Length; i++) {
+      for (int j = 0; j < pools[i].Count; j++) {
+        ReturnPool(pools[i][j]);
+      }
+    }
+  }
 }

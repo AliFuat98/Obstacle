@@ -6446,6 +6446,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa6d36e8fe5642e49bc569d439be0411, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  obstacleSpawner: {fileID: 1533992629}
   pauseGameControl: {fileID: 339307469}
   RoundOverMenu: {fileID: 2131972214}
   lifeButton: {fileID: 2063449351}
