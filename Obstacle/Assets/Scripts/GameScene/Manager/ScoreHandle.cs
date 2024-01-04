@@ -9,7 +9,7 @@ public class ScoreHandle : MonoBehaviour {
   [SerializeField] TextMeshProUGUI eggCountText;
   [SerializeField] private PauseGameControl pauseGameControl;
 
-  int eggCount = 0;
+  int eggCount = 100;
   float score = 0;
   float scoreRate = .5f;
 
@@ -46,6 +46,15 @@ public class ScoreHandle : MonoBehaviour {
     UpadateEggDisplay();
   }
 
+  public void DecreaseEggCount(int amount) {
+    eggCount -= amount;
+    if (eggCount < 0) {
+      eggCount = 0;
+      Debug.LogError("negatif egg count");
+    }
+    UpadateEggDisplay();
+  }
+
   void UpadateEggDisplay() {
     if (eggCountText != null) {
       eggCountText.text = $"Egg\n{eggCount}";
@@ -54,6 +63,10 @@ public class ScoreHandle : MonoBehaviour {
 
   public float GetScore() {
     return score;
+  }
+
+  public int GetEggCount() {
+    return eggCount;
   }
 
   public void IncreaseScore(float amount) {

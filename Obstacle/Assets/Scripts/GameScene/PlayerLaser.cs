@@ -71,6 +71,10 @@ public class PlayerLaser : MonoBehaviour {
     }
   }
 
+  public void DecreaseCooldown(float amount) {
+    cooldownDuration = Mathf.Max(0, cooldownDuration - amount);
+  }
+
   void OnDrawGizmos() {
     Gizmos.color = Color.red; // Set the color of the Gizmo
     Gizmos.DrawWireSphere(transform.position, detectionRadius);

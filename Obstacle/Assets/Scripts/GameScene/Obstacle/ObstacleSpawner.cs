@@ -7,6 +7,7 @@ public class ObstacleSpawner : MonoBehaviour {
   [SerializeField] Vector2 spawnIntervalRange;
   [SerializeField] Transform[] spawnPoints;
   [SerializeField] Transform poolObjectsParent;
+  [SerializeField] RoundManager roundManager;
 
   List<GameObject>[] pools;
 
@@ -43,6 +44,7 @@ public class ObstacleSpawner : MonoBehaviour {
       obstacle.transform.position = new Vector3(spawnPoints[index].position.x, obstacle.transform.position.y, spawnPoints[index].position.z);
       obstacle.transform.SetParent(poolObjectsParent, false);
       obstacle.transform.forward = (Vector3.zero - spawnPoints[index].position).normalized;
+      roundManager.TotalSpawnedObject++;
     }
   }
 

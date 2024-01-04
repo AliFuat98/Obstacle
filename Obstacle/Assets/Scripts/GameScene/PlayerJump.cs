@@ -57,6 +57,10 @@ public class PlayerJump : MonoBehaviour {
     }
   }
 
+  public void IncreaseMaxJumpCount(int amount) {
+    maxJumps += amount;
+  }
+
   void OnCollisionEnter(Collision collision) {
     if (collision.gameObject.GetComponent<GroundMarker>() != null) {
       isGrounded = true;
