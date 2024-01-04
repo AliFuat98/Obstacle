@@ -51,4 +51,8 @@ public class ObstacleMovement : MonoBehaviour {
 
     gameObject.SetActive(false);
   }
+
+  public ObstacleSO GetObstacleSO() {
+    return obstacleSO;
+  }
 }

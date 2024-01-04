@@ -55,4 +55,8 @@ public class ScoreHandle : MonoBehaviour {
   public float GetScore() {
     return score;
   }
+
+  public void IncreaseScore(float amount) {
+    score += amount;
+  }
 }
