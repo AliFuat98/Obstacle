@@ -3,7 +3,7 @@ using UnityEngine;
 public class Egg : MonoBehaviour, ICollectible {
   float eggScorePoint = 20f;
 
-  public ObstacleEventChannel eventChannel;
+  public FloatingTextEventChannelSO eventChannel;
 
   public void Collect() {
     // Code for what happens when the egg is collected

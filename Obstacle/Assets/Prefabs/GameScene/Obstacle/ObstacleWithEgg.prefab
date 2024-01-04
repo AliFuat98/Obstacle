@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ae830b334b0f7f4f83a0bef18434ae8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eventChannel: {fileID: 11400000, guid: ae9b60963b51ee649a53a9fc454da6fc, type: 2}
 --- !u!1 &2924565702213153315
 GameObject:
   m_ObjectHideFlags: 0
@@ -318,7 +319,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstacleSO: {fileID: 11400000, guid: f870a6d89089c22489d01102fd238d56, type: 2}
-  testpart: {fileID: 2346226826525694711, guid: 1cec1eda8d6effc43b66a59a0eb0b5ec, type: 3}
   destroyTimerMax: 7
 --- !u!114 &559692674997771552
 MonoBehaviour:
