@@ -53,6 +53,7 @@ public class ObstacleMovement : MonoBehaviour {
 
     // floating Text
     eventChannel.RaiseEvent(obstacleSO.scorePoint.ToString(), transform.position + Vector3.up * 1);
+    ScoreHandle.Instance.IncreaseScore(obstacleSO.scorePoint);
 
     gameObject.SetActive(false);
   }

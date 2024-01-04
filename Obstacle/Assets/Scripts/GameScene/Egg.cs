@@ -12,7 +12,7 @@ public class Egg : MonoBehaviour, ICollectible {
     SoundManager.Instance.PlayerCollect();
 
     if (eventChannel != null) {
-      eventChannel.RaiseEvent(eggScorePoint.ToString(), transform.position + Vector3.up * 2);
+      eventChannel.RaiseEvent(eggScorePoint.ToString(), transform.position + Vector3.up * 1);
     }
 
     gameObject.SetActive(false);

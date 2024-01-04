@@ -27,6 +27,11 @@ public class FloatingTextController : MonoBehaviour {
     var tmp = floatingTextParentInstance.GetComponentInChildren<TextMeshPro>();
     tmp.text = text;
 
+    // give random color
+    tmp.color = Random.ColorHSV(0f, 1f,     // Hue range
+                                0.5f, 1f,   // Saturation range
+                                0.5f, 1f);  // Value range
+
     // Trigger the animation
     var animator = floatingTextParentInstance.GetComponentInChildren<Animator>();
     animator.SetTrigger("PlayAnimation"); // Ensure this trigger matches your animation trigger
