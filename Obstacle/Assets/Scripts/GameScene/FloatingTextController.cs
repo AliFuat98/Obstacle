@@ -21,27 +21,24 @@ public class FloatingTextController : MonoBehaviour {
   }
 
   public void ShowFloatingText(string text, Vector3 position) {
-    var floatingTextInstance = objectPool.GetObject();
+    var floatingTextParentInstance = objectPool.GetObject();
 
-    floatingTextInstance.transform.position = position;
-    var tmp = floatingTextInstance.GetComponent<TextMeshPro>();
+    floatingTextParentInstance.transform.position = position;
+    var tmp = floatingTextParentInstance.GetComponentInChildren<TextMeshPro>();
     tmp.text = text;
 
     // Trigger the animation
-    if (floatingTextInstance.TryGetComponent<Animator>(out var animator)) {
-      animator.SetTrigger("PlayAnimation"); // Ensure this trigger matches your animation trigger
-    } else {
-      return;
-    }
+    var animator = floatingTextParentInstance.GetComponentInChildren<Animator>();
+    animator.SetTrigger("PlayAnimation"); // Ensure this trigger matches your animation trigger
 
     // Start coroutine to return to pool after animation
-    StartCoroutine(ReturnToPoolAfterAnimation(floatingTextInstance));
+    StartCoroutine(ReturnToPoolAfterAnimation(floatingTextParentInstance));
   }
 
-  IEnumerator ReturnToPoolAfterAnimation(GameObject floatingTextInstance) {
-    Animator animator = floatingTextInstance.GetComponent<Animator>();
+  IEnumerator ReturnToPoolAfterAnimation(GameObject floatingTextParentInstance) {
+    Animator animator = floatingTextParentInstance.GetComponentInChildren<Animator>();
     yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1);
 
-    objectPool.ReturnObject(floatingTextInstance);
+    objectPool.ReturnObject(floatingTextParentInstance);
   }
 }

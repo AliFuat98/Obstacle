@@ -1,9 +1,9 @@
 using UnityEngine;
 
 public class Egg : MonoBehaviour, ICollectible {
-  float eggScorePoint = 20f;
+  [SerializeField] FloatingTextEventChannelSO eventChannel;
 
-  public FloatingTextEventChannelSO eventChannel;
+  float eggScorePoint = 20f;
 
   public void Collect() {
     // Code for what happens when the egg is collected

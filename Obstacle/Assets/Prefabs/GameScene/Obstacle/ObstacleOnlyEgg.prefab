@@ -200,3 +200,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstacleSO: {fileID: 11400000, guid: f870a6d89089c22489d01102fd238d56, type: 2}
   destroyTimerMax: 7
+  eventChannel: {fileID: 11400000, guid: ae9b60963b51ee649a53a9fc454da6fc, type: 2}

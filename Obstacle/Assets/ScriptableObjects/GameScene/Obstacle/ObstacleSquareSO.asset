@@ -16,3 +16,4 @@ MonoBehaviour:
   spawnProbability: 0.1
   poolSize: 10
   moveSpeed: 9
+  scorePoint: 20

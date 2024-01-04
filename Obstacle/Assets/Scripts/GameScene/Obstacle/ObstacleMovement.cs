@@ -1,10 +1,12 @@
 using System.Collections;
+using System.Diagnostics.Tracing;
 using UnityEngine;
 
 public class ObstacleMovement : MonoBehaviour {
   [SerializeField] ObstacleSO obstacleSO;
 
   [SerializeField] float destroyTimerMax;
+  [SerializeField] FloatingTextEventChannelSO eventChannel;
   float destroyTimer;
 
   bool canMove = true;
@@ -48,6 +50,9 @@ public class ObstacleMovement : MonoBehaviour {
     yield return new WaitForSeconds(Random.Range(1, 2));
 
     ParticalSpawner.Instance.SpawnPartical(transform.position);
+
+    // floating Text
+    eventChannel.RaiseEvent(obstacleSO.scorePoint.ToString(), transform.position + Vector3.up * 1);
 
     gameObject.SetActive(false);
   }
