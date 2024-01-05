@@ -26,7 +26,9 @@ public class HighScoreManager : MonoBehaviour {
     string json = PlayerPrefs.GetString("HighScores");
     highScoresList = JsonUtility.FromJson<HighScoreList>(json);
 
-    highScoresList ??= new HighScoreList();
+    highScoresList ??= new HighScoreList() {
+      scoreList = new List<int> { }
+    };
 
     // update UI
     var index = 0;
