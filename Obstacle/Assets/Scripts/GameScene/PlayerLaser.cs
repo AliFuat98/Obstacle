@@ -60,6 +60,14 @@ public class PlayerLaser : MonoBehaviour {
     Collider[] hitColliders = Physics.OverlapSphere(playerPosition, detectionRadius, obstacleLayer);
 
     foreach (var hitCollider in hitColliders) {
+      // if the obstacle is pass then return
+      if (hitCollider.transform.position.x > transform.position.y + 1) {
+        continue;
+      }
+
+      if (hitCollider.transform.position.z < transform.position.z -1) {
+        continue;
+      }
       hitCollider.GetComponent<ObstacleMovement>().LaserTouch();
     }
   }

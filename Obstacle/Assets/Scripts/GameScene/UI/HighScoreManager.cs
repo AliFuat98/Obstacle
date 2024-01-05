@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class HighScoreManager : MonoBehaviour {
   [SerializeField] Transform ParentHighManager;
+  [SerializeField] TextMeshProUGUI LastScoreText;
   public HighScoreList highScoresList = new();
 
   private HealthSystem healthSystem;
@@ -43,6 +44,9 @@ public class HighScoreManager : MonoBehaviour {
 
       index++;
     }
+
+    // assign last score
+    LastScoreText.text = highScoresList.LastScore.ToString();
   }
 
   public void AddHighScore(int score) {
@@ -53,6 +57,8 @@ public class HighScoreManager : MonoBehaviour {
     {
       highScoresList.scoreList.RemoveAt(3);
     }
+
+    highScoresList.LastScore = score;
 
     // Save the updated high scores list
     SaveHighScores();
@@ -68,4 +74,5 @@ public class HighScoreManager : MonoBehaviour {
 [System.Serializable]
 public class HighScoreList {
   public List<int> scoreList;
+  public int LastScore;
 }
