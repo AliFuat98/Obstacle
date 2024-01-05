@@ -13,6 +13,7 @@ public class PlayerJump : MonoBehaviour {
   [SerializeField] float jumpForce;
   [SerializeField] int maxJumps;
   [SerializeField] float maxYVelocity;
+  [SerializeField] ParticleSystem jumpParticleSystem;
 
   Rigidbody rb;
   bool isGrounded;
@@ -28,6 +29,7 @@ public class PlayerJump : MonoBehaviour {
   private void GameInput_OnJumpAction(object sender, System.EventArgs e) {
     if (isGrounded || jumpCount < maxJumps) {
       shouldJump = true;
+      jumpParticleSystem.Play();
     }
   }
 
