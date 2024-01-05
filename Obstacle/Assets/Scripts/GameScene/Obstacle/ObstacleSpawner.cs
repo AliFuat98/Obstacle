@@ -5,6 +5,7 @@ using UnityEngine;
 public class ObstacleSpawner : MonoBehaviour {
   [SerializeField] List<ObstacleSO> obstacleSOList;
   [SerializeField] Vector2 spawnIntervalRange;
+  [SerializeField] float minInternalRangeY;
   [SerializeField] Transform[] spawnPoints;
   [SerializeField] Transform poolObjectsParent;
   [SerializeField] RoundManager roundManager;
@@ -12,6 +13,7 @@ public class ObstacleSpawner : MonoBehaviour {
   List<GameObject>[] pools;
   float startInternalRangeY;
   int shrinkRateForIntervalRange = 40;
+
 
   private void Start() {
     InitializePools();
@@ -51,6 +53,7 @@ public class ObstacleSpawner : MonoBehaviour {
       roundManager.TotalSpawnedObject++;
 
       spawnIntervalRange.y -= 1 / (float)shrinkRateForIntervalRange;
+      spawnIntervalRange.y = Mathf.Clamp(spawnIntervalRange.y - (1/ (float)shrinkRateForIntervalRange), minInternalRangeY, startInternalRangeY);
     }
   }
 
