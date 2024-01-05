@@ -9040,7 +9040,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 200
   field of view: 60
   orthographic: 0
   orthographic size: 6.66
@@ -9327,7 +9327,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 0.6
@@ -10727,7 +10727,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1393256434
 Transform:
@@ -11395,6 +11395,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e3781e7ff91e07b47a23f4afc2443ea5, type: 2}
   - {fileID: 11400000, guid: 95e74c414621f434fbed5c4e3c80d915, type: 2}
   spawnIntervalRange: {x: 1, y: 3}
+  minInternalRangeY: 0
   spawnPoints:
   - {fileID: 803151533}
   - {fileID: 1409677147}
