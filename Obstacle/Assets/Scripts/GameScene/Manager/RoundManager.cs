@@ -90,7 +90,7 @@ public class RoundManager : MonoBehaviour {
 
     NextRoundButton.onClick.AddListener(() => {
       pauseGameControl.ResumeGame();
-      obstacleSpawner.ResetAllObstacles();
+      obstacleSpawner.ResetRoundInfos();
       RoundOverMenu.SetActive(false);
       targetProgress = 0f;
       roundSlider.value = 0f;
@@ -139,5 +139,9 @@ public class RoundManager : MonoBehaviour {
     pauseGameControl.PauseGame();
     RoundOverMenu.SetActive(true);
     UpdatePriceVisual();
+  }
+
+  public int GetObjectPerRound() {
+    return objectPerRound;
   }
 }

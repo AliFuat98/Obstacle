@@ -10,6 +10,8 @@ public class ObstacleSpawner : MonoBehaviour {
   [SerializeField] RoundManager roundManager;
 
   List<GameObject>[] pools;
+  float startInternalRangeY;
+  int shrinkRateForIntervalRange = 40;
 
   private void Start() {
     InitializePools();
@@ -17,6 +19,8 @@ public class ObstacleSpawner : MonoBehaviour {
     for (int i = 0; i < spawnPoints.Length; ++i) {
       StartCoroutine(SpawnObstacles(i));
     }
+
+    startInternalRangeY = spawnIntervalRange.y;
   }
 
   void InitializePools() {
@@ -45,6 +49,8 @@ public class ObstacleSpawner : MonoBehaviour {
       obstacle.transform.SetParent(poolObjectsParent, false);
       obstacle.transform.forward = (Vector3.zero - spawnPoints[index].position).normalized;
       roundManager.TotalSpawnedObject++;
+
+      spawnIntervalRange.y -= 1 / (float)shrinkRateForIntervalRange;
     }
   }
 
@@ -88,11 +94,13 @@ public class ObstacleSpawner : MonoBehaviour {
     obj.SetActive(false);
   }
 
-  public void ResetAllObstacles() {
+  public void ResetRoundInfos() {
     for (int i = 0; i < pools.Length; i++) {
       for (int j = 0; j < pools[i].Count; j++) {
         ReturnPool(pools[i][j]);
       }
     }
+
+    spawnIntervalRange.y = startInternalRangeY;
   }
 }
