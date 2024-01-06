@@ -3,16 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ObstacleSpawner : MonoBehaviour {
+  [SerializeField] RoundManager roundManager;
+
   [SerializeField] List<ObstacleSO> obstacleSOList;
-  [SerializeField] Vector2 spawnIntervalRange;
-  [SerializeField] float minInternalRangeY;
   [SerializeField] Transform[] spawnPoints;
   [SerializeField] Transform poolObjectsParent;
-  [SerializeField] RoundManager roundManager;
+
+  [Header("Spawn Settings")]
+  [SerializeField] Vector2 spawnIntervalRange;
+  [SerializeField] float minInternalRangeY;
+  [SerializeField] int shrinkRateForIntervalRange = 40;
 
   List<GameObject>[] pools;
   float startInternalRangeY;
-  int shrinkRateForIntervalRange = 40;
 
 
   private void Start() {
