@@ -11,12 +11,12 @@ public class ObstacleSpawner : MonoBehaviour {
 
   [Header("Spawn Settings")]
   [SerializeField] Vector2 spawnIntervalRange;
+
   [SerializeField] float minInternalRangeY;
   [SerializeField] int shrinkRateForIntervalRange = 40;
 
   List<GameObject>[] pools;
   float startInternalRangeY;
-
 
   private void Start() {
     InitializePools();
@@ -56,7 +56,7 @@ public class ObstacleSpawner : MonoBehaviour {
       roundManager.TotalSpawnedObject++;
 
       spawnIntervalRange.y -= 1 / (float)shrinkRateForIntervalRange;
-      spawnIntervalRange.y = Mathf.Clamp(spawnIntervalRange.y - (1/ (float)shrinkRateForIntervalRange), minInternalRangeY, startInternalRangeY);
+      spawnIntervalRange.y = Mathf.Clamp(spawnIntervalRange.y - (1 / (float)shrinkRateForIntervalRange), minInternalRangeY, startInternalRangeY);
     }
   }
 

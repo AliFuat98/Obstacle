@@ -17,6 +17,8 @@ public class FPSDisplay : MonoBehaviour {
     }
 
     timeLeft = updateInterval;
+
+    Application.targetFrameRate = 60;
   }
 
   private void Update() {
