@@ -10669,6 +10669,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ed174218fef079479ff8361929e9696, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameModeHandler: {fileID: 1732282884}
   ParentHighManager: {fileID: 2046907892}
   LastScoreText: {fileID: 1704236338}
   highScoresList:
@@ -14029,6 +14030,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstacleSpawner: {fileID: 1533992629}
+  highScoreManager: {fileID: 1070518464}
   dropdown: {fileID: 771078157}
   easy: 100
   normal: 75

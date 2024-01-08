@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class HighScoreManager : MonoBehaviour {
+  [SerializeField] GameModeHandler gameModeHandler;
   [SerializeField] Transform ParentHighManager;
   [SerializeField] TextMeshProUGUI LastScoreText;
   public HighScoreList highScoresList = new();
@@ -22,8 +23,8 @@ public class HighScoreManager : MonoBehaviour {
     SceneManager.LoadScene(SceneManager.GetActiveScene().name);
   }
 
-  private void LoadHighScores() {
-    string json = PlayerPrefs.GetString("HighScores");
+  public void LoadHighScores() {
+    string json = PlayerPrefs.GetString($"HighScores{gameModeHandler.GetGameMode()}");
     highScoresList = JsonUtility.FromJson<HighScoreList>(json);
 
     highScoresList ??= new HighScoreList() {
@@ -68,7 +69,7 @@ public class HighScoreManager : MonoBehaviour {
 
   private void SaveHighScores() {
     string json = JsonUtility.ToJson(highScoresList);
-    PlayerPrefs.SetString("HighScores", json);
+    PlayerPrefs.SetString($"HighScores{gameModeHandler.GetGameMode()}", json);
     PlayerPrefs.Save();
   }
 }

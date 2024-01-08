@@ -9,6 +9,7 @@ public enum GameMode {
 
 public class GameModeHandler : MonoBehaviour {
   [SerializeField] ObstacleSpawner obstacleSpawner;
+  [SerializeField] HighScoreManager highScoreManager;
   [SerializeField] TMP_Dropdown dropdown;
 
   [Header("Spawn Rate")]
@@ -17,10 +18,13 @@ public class GameModeHandler : MonoBehaviour {
   [SerializeField] int normal;
   [SerializeField] int hard;
 
+  GameMode selectedGameMode;
+
   private void Start() {
     dropdown.onValueChanged.AddListener((int index) => {
-      GameMode selectedMode = (GameMode)index;
-      AdjustDifficulty(selectedMode);
+      selectedGameMode = (GameMode)index;
+      AdjustDifficulty(selectedGameMode);
+      highScoreManager.LoadHighScores();
     });
 
     AdjustDifficulty(GameMode.Easy);
@@ -40,5 +44,9 @@ public class GameModeHandler : MonoBehaviour {
         obstacleSpawner.SetshrinkRateForIntervalRange(hard);
         break;
     }
+  }
+
+  public GameMode GetGameMode() {
+    return selectedGameMode;
   }
 }
