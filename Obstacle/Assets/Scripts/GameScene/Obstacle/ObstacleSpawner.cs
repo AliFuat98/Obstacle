@@ -55,7 +55,6 @@ public class ObstacleSpawner : MonoBehaviour {
       obstacle.transform.forward = (Vector3.zero - spawnPoints[index].position).normalized;
       roundManager.TotalSpawnedObject++;
 
-      spawnIntervalRange.y -= 1 / (float)shrinkRateForIntervalRange;
       spawnIntervalRange.y = Mathf.Clamp(spawnIntervalRange.y - (1 / (float)shrinkRateForIntervalRange), minInternalRangeY, startInternalRangeY);
     }
   }

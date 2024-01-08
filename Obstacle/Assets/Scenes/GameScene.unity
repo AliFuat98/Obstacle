@@ -10501,7 +10501,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.9, y: 0.9, z: 0.9}
+  m_Size: {x: 0.45, y: 0.45, z: 0.45}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &1267605231
 Transform:
@@ -11719,7 +11719,7 @@ MonoBehaviour:
   - {fileID: 1409677147}
   poolObjectsParent: {fileID: 388951729}
   spawnIntervalRange: {x: 1, y: 3}
-  minInternalRangeY: 0.5
+  minInternalRangeY: 0.8
   shrinkRateForIntervalRange: 100
 --- !u!4 &1533992630
 Transform:
@@ -12449,8 +12449,8 @@ MonoBehaviour:
   LaserButton: {fileID: 1528675162}
   JumpButton: {fileID: 919248619}
   NextRoundButton: {fileID: 1077310268}
-  objectPerRound: 40
-  scaleFactor: 0.7
+  objectPerRound: 30
+  scaleFactor: 0.2
   roundSlider: {fileID: 1532168247}
   fillSpeed: 0.05
   roundCountText: {fileID: 419464983}

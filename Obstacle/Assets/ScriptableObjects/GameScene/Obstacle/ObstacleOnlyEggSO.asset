@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ObstacleOnlyEggSO
   m_EditorClassIdentifier: 
   prefab: {fileID: 3084302644421053041, guid: 94a1360f22719354d83646523a19d26f, type: 3}
-  spawnProbability: 0.1
+  spawnProbability: 0.2
   poolSize: 10
-  moveSpeed: 7
+  moveSpeed: 8
   scorePoint: 0
