@@ -161,7 +161,7 @@ public class RoundManager : MonoBehaviour {
     pauseGameControl.PauseGame();
     StartCoroutine(DisableButtonsTemporarily());
     roundCountText.text = $"Round {currentRound}";
-    roundCountTextOnProgressBar.text = $"Round :{currentRound}";
+    roundCountTextOnProgressBar.text = $"Round: {currentRound}";
     roundSlider.value = 1;
     UpdatePriceVisual();
 

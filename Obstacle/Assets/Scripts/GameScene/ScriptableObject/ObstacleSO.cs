@@ -7,4 +7,5 @@ public class ObstacleSO : ScriptableObject {
   public int poolSize;
   public float moveSpeed;
   public int scorePoint;
+  public int jumpScorePoint;
 }

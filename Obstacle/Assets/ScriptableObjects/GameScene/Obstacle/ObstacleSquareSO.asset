@@ -17,3 +17,4 @@ MonoBehaviour:
   poolSize: 10
   moveSpeed: 8.5
   scorePoint: 20
+  jumpScorePoint: 7

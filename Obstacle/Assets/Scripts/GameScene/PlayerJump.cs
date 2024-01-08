@@ -19,7 +19,7 @@ public class PlayerJump : MonoBehaviour {
   bool isGrounded;
   bool isFirstJump;
   bool shouldJump;
-  int jumpCount = 0;
+  public int JumpCount { get; private set; } = 0;
 
   void Start() {
     rb = GetComponent<Rigidbody>();
@@ -27,7 +27,7 @@ public class PlayerJump : MonoBehaviour {
   }
 
   private void GameInput_OnJumpAction(object sender, System.EventArgs e) {
-    if (isGrounded || jumpCount < maxJumps) {
+    if (isGrounded || JumpCount < maxJumps) {
       shouldJump = true;
       jumpParticleSystem.Play();
     }
@@ -50,7 +50,7 @@ public class PlayerJump : MonoBehaviour {
       });
 
       shouldJump = false; // Reset the jump flag
-      jumpCount++;
+      JumpCount++;
       isFirstJump = false;
     }
 
@@ -66,7 +66,7 @@ public class PlayerJump : MonoBehaviour {
   void OnCollisionEnter(Collision collision) {
     if (collision.gameObject.GetComponent<GroundMarker>() != null) {
       isGrounded = true;
-      jumpCount = 0;
+      JumpCount = 0;
       isFirstJump = true;
     }
   }

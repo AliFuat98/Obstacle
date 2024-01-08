@@ -10579,10 +10579,11 @@ GameObject:
   - component: {fileID: 1267605227}
   - component: {fileID: 1267605232}
   - component: {fileID: 1267605237}
-  - component: {fileID: 1267605233}
+  - component: {fileID: 1267605238}
   - component: {fileID: 1267605234}
   - component: {fileID: 1267605235}
   - component: {fileID: 1267605236}
+  - component: {fileID: 1267605233}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -10744,6 +10745,23 @@ MonoBehaviour:
     m_Bits: 64
   cooldownDuration: 20
   MinCooldownDuration: 10
+--- !u!114 &1267605238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1267605226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a421b283815aab4f8a84d423d2245c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventChannel: {fileID: 11400000, guid: ae9b60963b51ee649a53a9fc454da6fc, type: 2}
+  rayLength: 10
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &1278793736
 GameObject:
   m_ObjectHideFlags: 0
