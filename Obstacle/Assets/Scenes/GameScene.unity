@@ -11484,7 +11484,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.45, y: 0.45, z: 0.45}
+  m_Size: {x: 0.55, y: 0.55, z: 0.55}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &1267605231
 Transform:
@@ -13613,6 +13613,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa6d36e8fe5642e49bc569d439be0411, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameModeHandler: {fileID: 1732282884}
   obstacleSpawner: {fileID: 1533992629}
   pauseGameControl: {fileID: 339307469}
   RoundOverMenu: {fileID: 2131972214}
@@ -13620,8 +13621,8 @@ MonoBehaviour:
   LaserButton: {fileID: 1528675162}
   JumpButton: {fileID: 919248619}
   NextRoundButton: {fileID: 1077310268}
-  objectPerRound: 30
-  scaleFactor: 0.2
+  objectPerRound: 40
+  scaleFactor: 0.25
   roundSlider: {fileID: 1532168247}
   fillSpeed: 0.05
   roundCountText: {fileID: 419464983}
@@ -14029,12 +14030,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12b5716d3b7bfd1408d7f3d13acfd4ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roundManager: {fileID: 1678572980}
   obstacleSpawner: {fileID: 1533992629}
   highScoreManager: {fileID: 1070518464}
   dropdown: {fileID: 771078157}
-  easy: 100
+  easy: 125
   normal: 75
-  hard: 50
+  hard: 25
 --- !u!1 &1747058539
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class RoundManager : MonoBehaviour {
 
   [Header("Scripts")]
+  [SerializeField] GameModeHandler gameModeHandler;
   [SerializeField] ObstacleSpawner obstacleSpawner;
 
   [SerializeField] PauseGameControl pauseGameControl;
@@ -120,8 +121,6 @@ public class RoundManager : MonoBehaviour {
     laserFeature = new LaserRoundFeature(laserPrice, laserPriceScaleFactor, playerLaser);
     extraJumpFeature = new ExtraJumpRoundFeature(extraJumpPrice, extraJumpPriceScaleFactor, playerJump);
 
-    roundCountTextOnProgressBar.text = "Round: 1";
-
     buttons = new() {
       lifeButton,
       JumpButton,
@@ -161,7 +160,7 @@ public class RoundManager : MonoBehaviour {
     pauseGameControl.PauseGame();
     StartCoroutine(DisableButtonsTemporarily());
     roundCountText.text = $"Round {currentRound}";
-    roundCountTextOnProgressBar.text = $"Round: {currentRound}";
+    roundCountTextOnProgressBar.text = $"{gameModeHandler.GetGameMode()} Round: {currentRound}";
     roundSlider.value = 1;
     UpdatePriceVisual();
 
@@ -185,6 +184,10 @@ public class RoundManager : MonoBehaviour {
     foreach (var button in buttons) {
       button.interactable = true;
     }
+  }
+
+  public void SetroundCountTextOnProgressBar(string text) {
+    roundCountTextOnProgressBar.text = text;
   }
 
   public int GetObjectPerRound() {

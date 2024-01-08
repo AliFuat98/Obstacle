@@ -8,6 +8,7 @@ public enum GameMode {
 }
 
 public class GameModeHandler : MonoBehaviour {
+  [SerializeField] RoundManager roundManager;
   [SerializeField] ObstacleSpawner obstacleSpawner;
   [SerializeField] HighScoreManager highScoreManager;
   [SerializeField] TMP_Dropdown dropdown;
@@ -25,6 +26,7 @@ public class GameModeHandler : MonoBehaviour {
       selectedGameMode = (GameMode)index;
       AdjustDifficulty(selectedGameMode);
       highScoreManager.LoadHighScores();
+      roundManager.SetroundCountTextOnProgressBar($"{selectedGameMode} Round 1");
     });
 
     AdjustDifficulty(GameMode.Easy);
