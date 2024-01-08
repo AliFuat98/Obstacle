@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 34766a630450a524aa3f069ed9ec0933, type: 3}
-  m_Name: ObstacleOnlyEggSO
+  m_Name: ObstacleHeartSO
   m_EditorClassIdentifier: 
-  prefab: {fileID: 3084302644421053041, guid: 94a1360f22719354d83646523a19d26f, type: 3}
-  spawnProbability: 0.19
+  prefab: {fileID: 3084302644421053041, guid: 25dc1ebcebf5cfc4d92d006f7f6c1f98, type: 3}
+  spawnProbability: 0.01
   poolSize: 10
   moveSpeed: 8
   scorePoint: 0

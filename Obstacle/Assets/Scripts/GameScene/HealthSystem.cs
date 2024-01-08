@@ -14,7 +14,7 @@ public class HealthSystem : MonoBehaviour {
       return xCurrentHealth;
     }
     set {
-      if (currentHealth != value) {
+      if (xCurrentHealth != value) {
         OnHealthChanged?.Invoke(this, new OnHealthChangedEventArgs {
           health = value,
         });

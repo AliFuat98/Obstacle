@@ -11864,10 +11864,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roundManager: {fileID: 1678572980}
   obstacleSOList:
+  - {fileID: 11400000, guid: 67b29651b2b1ed247aa2fe2fa0985281, type: 2}
+  - {fileID: 11400000, guid: 95e74c414621f434fbed5c4e3c80d915, type: 2}
   - {fileID: 11400000, guid: c2eb40d8e24f3bd439ba4596aa7ddd7a, type: 2}
   - {fileID: 11400000, guid: f870a6d89089c22489d01102fd238d56, type: 2}
   - {fileID: 11400000, guid: e3781e7ff91e07b47a23f4afc2443ea5, type: 2}
-  - {fileID: 11400000, guid: 95e74c414621f434fbed5c4e3c80d915, type: 2}
   spawnPoints:
   - {fileID: 803151533}
   - {fileID: 1409677147}

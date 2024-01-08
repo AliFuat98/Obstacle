@@ -1,3 +1,3 @@
 public interface ICollectible {
-  void Collect();
+  void Collect(PlayerMarker player);
 }

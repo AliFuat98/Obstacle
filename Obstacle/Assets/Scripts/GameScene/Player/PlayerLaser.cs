@@ -48,7 +48,7 @@ public class PlayerLaser : MonoBehaviour {
 
   // every half of a second it will execute detectObstacle function until the duration finish
   IEnumerator DetectObstacleCoroutine() {
-    var rate = 0.5f;
+    var rate = 0.25f;
     var totalCyle = (int)(duration / rate);
     for (int i = 0; i < totalCyle; i++) {
       DetectObstacles();
