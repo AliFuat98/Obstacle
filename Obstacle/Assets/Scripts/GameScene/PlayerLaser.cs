@@ -15,6 +15,7 @@ public class PlayerLaser : MonoBehaviour {
   public float CooldownRemaining => Mathf.Max(0, cooldownDuration - (Time.time - lastLaunchTime));
 
   public float cooldownDuration;
+  public float MinCooldownDuration;
   private float lastLaunchTime;
 
   void Start() {

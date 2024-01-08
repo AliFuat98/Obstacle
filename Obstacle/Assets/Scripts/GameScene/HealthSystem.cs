@@ -92,4 +92,12 @@ public class HealthSystem : MonoBehaviour {
   public bool IsInvulnerabile() {
     return isInvulnerable;
   }
+
+  public int GetHealt() {
+    return currentHealth;
+  }
+
+  public int GetMaxHealt() {
+    return maxHealth;
+  }
 }

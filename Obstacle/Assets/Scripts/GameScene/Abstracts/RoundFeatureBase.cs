@@ -12,6 +12,7 @@ public abstract class RoundFeatureBase : IRoundFeature {
   }
 
   public abstract void Execute();
+  public abstract bool IsPossible();
 
   public string GetPriceText() {
     return $"{price} Egg";

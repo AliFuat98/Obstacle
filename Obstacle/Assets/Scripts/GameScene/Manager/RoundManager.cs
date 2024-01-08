@@ -1,4 +1,7 @@
+using System.Collections;
+using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,6 +20,7 @@ public class RoundManager : MonoBehaviour {
   [SerializeField] Button LaserButton;
   [SerializeField] Button JumpButton;
   [SerializeField] Button NextRoundButton;
+  List<Button> buttons;
 
   [Header("RoundSettings")]
   [SerializeField] int objectPerRound;
@@ -29,6 +33,7 @@ public class RoundManager : MonoBehaviour {
   float targetProgress = 0f;
 
   [SerializeField] TextMeshProUGUI roundCountText;
+  [SerializeField] TextMeshProUGUI roundCountTextOnProgressBar;
 
   [Header("Price Text")]
   [SerializeField] TextMeshProUGUI extraLifePriceText;
@@ -49,6 +54,8 @@ public class RoundManager : MonoBehaviour {
 
   [Range(0f, 2f)]
   [SerializeField] float extraJumpPriceScaleFactor = 1;
+
+  [SerializeField] TextMeshProUGUI laserDescriptionText;
 
   int currentRound;
   int totalSpawnedObject = 1;
@@ -112,6 +119,15 @@ public class RoundManager : MonoBehaviour {
     extraLifeFeature = new ExtraLifeRoundFeature(extraLifePrice, extraLifePriceScaleFactor, playerHealthSystem);
     laserFeature = new LaserRoundFeature(laserPrice, laserPriceScaleFactor, playerLaser);
     extraJumpFeature = new ExtraJumpRoundFeature(extraJumpPrice, extraJumpPriceScaleFactor, playerJump);
+
+    roundCountTextOnProgressBar.text = "Round: 1";
+
+    buttons = new() {
+      lifeButton,
+      JumpButton,
+      LaserButton,
+      NextRoundButton,
+    };
   }
 
   void Update() {
@@ -121,7 +137,7 @@ public class RoundManager : MonoBehaviour {
   }
 
   private void HandleRoundFeature(IRoundFeature feature) {
-    if (feature.CanPay(ScoreHandle.Instance.GetEggCount())) {
+    if (feature.CanPay(ScoreHandle.Instance.GetEggCount()) && feature.IsPossible()) {
       feature.Execute();
       feature.UpdatePrice();
       UpdatePriceVisual();
@@ -129,16 +145,46 @@ public class RoundManager : MonoBehaviour {
   }
 
   private void UpdatePriceVisual() {
-    extraLifePriceText.text = extraLifeFeature.GetPriceText();
-    laserPriceText.text = laserFeature.GetPriceText();
+    extraLifePriceText.text = (playerHealthSystem.GetHealt() >= playerHealthSystem.GetMaxHealt()) ? "Max": extraLifeFeature.GetPriceText();
+
     extraJumpPriceText.text = extraJumpFeature.GetPriceText();
-    roundCountText.text = $"Round {currentRound}";
+
+    laserPriceText.text = laserFeature.GetPriceText();
+    laserDescriptionText.text = $"Decrease laser cooldown ({playerLaser.cooldownDuration} -> {playerLaser.cooldownDuration - 1 })";
+    if (playerLaser.cooldownDuration == playerLaser.MinCooldownDuration) {
+      laserDescriptionText.text = $"Decrease laser cooldown ({playerLaser.cooldownDuration})";
+      laserPriceText.text = "Max";
+    }
   }
 
   void RoundOver() {
     pauseGameControl.PauseGame();
-    RoundOverMenu.SetActive(true);
+    StartCoroutine(DisableButtonsTemporarily());
+    roundCountText.text = $"Round {currentRound}";
+    roundCountTextOnProgressBar.text = $"Round :{currentRound}";
+    roundSlider.value = 1;
     UpdatePriceVisual();
+
+    RoundOverMenu.SetActive(true);
+  }
+
+  IEnumerator DisableButtonsTemporarily() {
+    // Disable all buttons
+    foreach (var button in buttons) {
+      button.interactable = false;
+    }
+
+    // Wait for 0.5 seconds using unscaled time
+    float elapsed = 0;
+    while (elapsed < .5f) {
+      elapsed += Time.unscaledDeltaTime;
+      yield return null;
+    }
+
+    // Enable all buttons
+    foreach (var button in buttons) {
+      button.interactable = true;
+    }
   }
 
   public int GetObjectPerRound() {

@@ -10,6 +10,14 @@ public class ExtraLifeRoundFeature : RoundFeatureBase {
     playerHealthSystem.Heal(1);
     ScoreHandle.Instance.DecreaseEggCount(price);
   }
+
+  public override bool IsPossible() {
+    if (playerHealthSystem.GetHealt() >= playerHealthSystem.GetMaxHealt()) {
+      return false;
+    }
+
+    return true;
+  }
 }
 
 public class ExtraJumpRoundFeature : RoundFeatureBase {
@@ -24,6 +32,10 @@ public class ExtraJumpRoundFeature : RoundFeatureBase {
     playerJump.IncreaseMaxJumpCount(1);
     ScoreHandle.Instance.DecreaseEggCount(price);
   }
+
+  public override bool IsPossible() {
+    return true;
+  }
 }
 
 public class LaserRoundFeature : RoundFeatureBase {
@@ -37,5 +49,13 @@ public class LaserRoundFeature : RoundFeatureBase {
   public override void Execute() {
     playerLaser.DecreaseCooldown(1f);
     ScoreHandle.Instance.DecreaseEggCount(price);
+  }
+
+  public override bool IsPossible() {
+    if (playerLaser.cooldownDuration <= playerLaser.MinCooldownDuration) {
+      return false;
+    }
+
+    return true;
   }
 }
