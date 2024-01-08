@@ -13,7 +13,8 @@ public class ObstacleSpawner : MonoBehaviour {
   [SerializeField] Vector2 spawnIntervalRange;
 
   [SerializeField] float minInternalRangeY;
-  [SerializeField] int shrinkRateForIntervalRange = 40;
+
+  int shrinkRateForIntervalRange;
 
   List<GameObject>[] pools;
   float startInternalRangeY;
@@ -107,5 +108,9 @@ public class ObstacleSpawner : MonoBehaviour {
     }
 
     spawnIntervalRange.y = startInternalRangeY;
+  }
+
+  public void SetshrinkRateForIntervalRange(int value) {
+    shrinkRateForIntervalRange = value;
   }
 }
