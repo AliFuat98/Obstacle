@@ -1,4 +1,3 @@
-using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -17,10 +16,6 @@ public class ScoreHandle : MonoBehaviour {
     Instance = this;
   }
 
-  void Start() {
-    StartCoroutine(IncreaseScoreRate());
-  }
-
   void Update() {
     if (pauseGameControl != null && !pauseGameControl.IsGamePaused()) {
       score += scoreRate * Time.deltaTime;
@@ -28,11 +23,8 @@ public class ScoreHandle : MonoBehaviour {
     }
   }
 
-  IEnumerator IncreaseScoreRate() {
-    while (true) {
-      yield return new WaitForSeconds(5);
-      scoreRate += 0.1f;
-    }
+  public void IncreaseScoreRate() {
+    scoreRate += 0.02f;
   }
 
   void UpdateScoreDisplay() {

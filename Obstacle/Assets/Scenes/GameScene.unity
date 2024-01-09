@@ -12891,7 +12891,7 @@ MonoBehaviour:
   - {fileID: 1409677147}
   poolObjectsParent: {fileID: 388951729}
   spawnIntervalRange: {x: 1, y: 3}
-  minInternalRangeY: 1
+  minInternalRangeY: 0.9
 --- !u!4 &1533992630
 Transform:
   m_ObjectHideFlags: 0

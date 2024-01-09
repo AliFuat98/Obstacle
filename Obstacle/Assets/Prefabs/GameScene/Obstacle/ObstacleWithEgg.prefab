@@ -181,6 +181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EggGameObject: {fileID: 756739495826446046}
+  probability: 0.6
 --- !u!65 &8102495936583458560
 BoxCollider:
   m_ObjectHideFlags: 0

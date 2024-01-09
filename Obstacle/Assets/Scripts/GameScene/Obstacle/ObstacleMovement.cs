@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Diagnostics.Tracing;
 using UnityEngine;
 
 public class ObstacleMovement : MonoBehaviour {
@@ -14,6 +13,8 @@ public class ObstacleMovement : MonoBehaviour {
 
   private void OnEnable() {
     destroyTimer = 0f;
+    canMove = true;
+    isFirstLaserCoroutine = true;
   }
 
   private void Update() {
@@ -58,7 +59,7 @@ public class ObstacleMovement : MonoBehaviour {
     Egg collectibleEgg = GetComponentInChildren<Egg>();
     if (collectibleEgg != null) {
       ScoreHandle.Instance.IncreaseEggCount(2);
-    } 
+    }
 
     gameObject.SetActive(false);
   }

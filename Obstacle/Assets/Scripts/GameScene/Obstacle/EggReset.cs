@@ -2,11 +2,12 @@ using UnityEngine;
 
 public class EggReset : MonoBehaviour {
   [SerializeField] GameObject EggGameObject;
+  [SerializeField] float probability;
 
   private void OnEnable() {
     float randomValue = Random.value;
 
-    if (randomValue >= 0.5f) {
+    if (randomValue >= probability) {
       EggGameObject.SetActive(true);
     }
   }

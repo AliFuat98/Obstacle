@@ -30,6 +30,7 @@ public class GameModeHandler : MonoBehaviour {
     });
 
     AdjustDifficulty(GameMode.Easy);
+    dropdown.onValueChanged.Invoke(0);
   }
 
   void AdjustDifficulty(GameMode mode) {

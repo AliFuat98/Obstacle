@@ -45,6 +45,7 @@ public class PlayerJumpScore : MonoBehaviour {
       var score = obstacle.GetObstacleSO().jumpScorePoint;
       ScoreHandle.Instance.IncreaseScore(score);
       eventChannel.RaiseEvent(score.ToString(), obstacle.transform.position + Vector3.up);
+      ScoreHandle.Instance.IncreaseScoreRate();
     }
   }
 }

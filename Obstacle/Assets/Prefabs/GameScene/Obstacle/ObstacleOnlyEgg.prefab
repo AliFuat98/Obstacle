@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3459460895250005744}
   - component: {fileID: 1615709690762466444}
+  - component: {fileID: -2535891082754667872}
   m_Layer: 0
   m_Name: ObstacleOnlyEgg
   m_TagString: Untagged
@@ -48,6 +49,20 @@ MonoBehaviour:
   obstacleSO: {fileID: 11400000, guid: f870a6d89089c22489d01102fd238d56, type: 2}
   destroyTimerMax: 7
   eventChannel: {fileID: 11400000, guid: ae9b60963b51ee649a53a9fc454da6fc, type: 2}
+--- !u!114 &-2535891082754667872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3084302644421053041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a738ff374ac8e6448d60c623f4dcfae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EggGameObject: {fileID: 2171802457149437215}
+  probability: 0
 --- !u!1001 &8940825931118674731
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -105,6 +120,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b9237283c42e8941910403966c86936, type: 3}
+--- !u!1 &2171802457149437215 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7077401332597421620, guid: 1b9237283c42e8941910403966c86936, type: 3}
+  m_PrefabInstance: {fileID: 8940825931118674731}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6000715683749339586 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3410037247919039209, guid: 1b9237283c42e8941910403966c86936, type: 3}
