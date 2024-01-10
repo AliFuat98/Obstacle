@@ -129,6 +129,7 @@ GameObject:
   - component: {fileID: 1615709690762466444}
   - component: {fileID: 559692674997771552}
   - component: {fileID: 8102495936583458560}
+  - component: {fileID: -6561642802888357036}
   m_Layer: 6
   m_Name: ObstacleWithEgg
   m_TagString: Untagged
@@ -204,6 +205,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2, y: 0.5, z: 1}
   m_Center: {x: 0, y: 1.5, z: 0}
+--- !u!114 &-6561642802888357036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3084302644421053041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 952ef415817c80e489aada8ab6c23354, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  visualList:
+  - {fileID: 5485021286710653278}
+  - {fileID: 2924565702213153315}
 --- !u!1 &3780882600201787931
 GameObject:
   m_ObjectHideFlags: 0

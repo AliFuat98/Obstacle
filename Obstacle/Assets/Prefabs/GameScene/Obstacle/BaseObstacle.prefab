@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2755763392641596524}
   - component: {fileID: 4046334075835555297}
   - component: {fileID: 4531603320287488381}
+  - component: {fileID: -7392183101052524560}
   m_Layer: 6
   m_Name: BaseObstacle
   m_TagString: Untagged
@@ -70,6 +71,20 @@ MonoBehaviour:
   obstacleSO: {fileID: 11400000, guid: c2eb40d8e24f3bd439ba4596aa7ddd7a, type: 2}
   destroyTimerMax: 7
   eventChannel: {fileID: 11400000, guid: ae9b60963b51ee649a53a9fc454da6fc, type: 2}
+--- !u!114 &-7392183101052524560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1571321360999975046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 952ef415817c80e489aada8ab6c23354, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  visualList:
+  - {fileID: 3122099974394394492}
 --- !u!1 &3122099974394394492
 GameObject:
   m_ObjectHideFlags: 0
