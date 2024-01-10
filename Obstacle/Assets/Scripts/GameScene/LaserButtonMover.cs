@@ -2,36 +2,36 @@ using UnityEngine;
 using UnityEngine.EventSystems; // Required for UI event handling
 using UnityEngine.UI;
 
-public class LaserButtonMover : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler {
-  private Button button;
-  private float pressTime = 0;
-  private bool isDragging = false;
-  private const float HoldTime = 1.0f; // Time in seconds to trigger the move
+public class LaserButtonMover : MonoBehaviour, IDragHandler, IEndDragHandler {
 
-  void Awake() {
-    button = GetComponentInChildren<Button>();
-  }
+  private void Start() {
+    Vector3 loadedPosition = LoadVector3("LaserPosition");
 
-  public void OnPointerDown(PointerEventData eventData) {
-    pressTime = Time.time;
-    isDragging = false;
-  }
-
-  public void OnPointerUp(PointerEventData eventData) {
-    if (isDragging) {
-      // Handle button repositioning here
-      transform.position = eventData.position;
-    } else if (Time.time - pressTime < HoldTime) {
-      // Perform normal button action
-      button.onClick.Invoke();
+    if (loadedPosition != Vector3.zero) {
+      transform.position = loadedPosition;
     }
   }
 
   public void OnDrag(PointerEventData eventData) {
-    if (Time.time - pressTime >= HoldTime) {
-      isDragging = true;
-      // Update button position while dragging
-      transform.position = eventData.position;
-    }
+    transform.position = eventData.position;
+  }
+
+  public void OnEndDrag(PointerEventData eventData) {
+    SaveVector3("LaserPosition", new Vector3(eventData.position.x, eventData.position.y, 0));
+  }
+
+  void SaveVector3(string key, Vector3 value) {
+    PlayerPrefs.SetFloat(key + "_X", value.x);
+    PlayerPrefs.SetFloat(key + "_Y", value.y);
+    PlayerPrefs.SetFloat(key + "_Z", value.z);
+    PlayerPrefs.Save();
+  }
+
+  Vector3 LoadVector3(string key) {
+    float x = PlayerPrefs.GetFloat(key + "_X");
+    float y = PlayerPrefs.GetFloat(key + "_Y");
+    float z = PlayerPrefs.GetFloat(key + "_Z");
+
+    return new Vector3(x, y, z);
   }
 }
