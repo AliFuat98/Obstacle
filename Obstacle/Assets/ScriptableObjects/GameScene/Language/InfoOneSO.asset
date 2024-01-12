@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e7d6366f5709fb439ca836fb50b14b5, type: 3}
+  m_Name: InfoOneSO
+  m_EditorClassIdentifier: 
+  Tr: "Engelleri a\u015Fmak ve z\u0131plamak i\xE7in ekrana dokunun. Havada iki kez
+    z\u0131playabilirsin."
+  En: Touch the screen to overcome obstacles and jump. You can jump twice in the
+    air.

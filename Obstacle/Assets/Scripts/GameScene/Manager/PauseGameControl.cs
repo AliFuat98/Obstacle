@@ -6,6 +6,10 @@ public class PauseGameControl : MonoBehaviour {
 
   [SerializeField] Button pauseButton;
   [SerializeField] Button StartButton;
+
+  [SerializeField] Button InfoButton;
+  [SerializeField] Button InfoCloseButton;
+  [SerializeField] GameObject InfoPageGO;
   [SerializeField] GameObject MainMenuGO;
 
   private void Start() {
@@ -15,6 +19,12 @@ public class PauseGameControl : MonoBehaviour {
     StartButton.onClick.AddListener(() => {
       ResumeGame();
       MainMenuGO.SetActive(false);
+    });
+    InfoButton.onClick.AddListener(() => {
+      InfoPageGO.SetActive(true);
+    });
+    InfoCloseButton.onClick.AddListener(() => {
+      InfoPageGO.SetActive(false);
     });
     PauseGame();
   }

@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e7d6366f5709fb439ca836fb50b14b5, type: 3}
+  m_Name: InfoFourSO
+  m_EditorClassIdentifier: 
+  Tr: "Tek z\u0131plama ile a\u015Ft\u0131\u011F\u0131n engeller fazladan puan kazand\u0131r\u0131r.
+    Her tek z\u0131planan engel ba\u015F\u0131na saniyede kazand\u0131\u011F\u0131n
+    taban puan artar."
+  En: Obstacles that you overcome with a single jump give extra points. The base
+    points you earn per second increase for each obstacle you jump over once.
