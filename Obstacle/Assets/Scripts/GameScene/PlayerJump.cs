@@ -37,8 +37,8 @@ public class PlayerJump : MonoBehaviour {
     // Apply forces in FixedUpdate
     if (shouldJump) {
       // if it is going down reset velocity to jump nicely
-      if (rb.velocity.y < 0) {
-        rb.velocity = Vector3.zero;
+      if (rb.linearVelocity.y < 0) {
+        rb.linearVelocity = Vector3.zero;
       }
 
       // first jump has more force
@@ -54,8 +54,8 @@ public class PlayerJump : MonoBehaviour {
       isFirstJump = false;
     }
 
-    if (rb.velocity.y > maxYVelocity) {
-      rb.velocity = new Vector3(rb.velocity.x, maxYVelocity, rb.velocity.z);
+    if (rb.linearVelocity.y > maxYVelocity) {
+      rb.linearVelocity = new Vector3(rb.linearVelocity.x, maxYVelocity, rb.linearVelocity.z);
     }
   }
 
